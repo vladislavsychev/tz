@@ -1,0 +1,22 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: postgres
+  pool: 5
+  username: vlad
+  password: nikita
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: postgres
+  pool: 5
+  username: vlad
+  password: nikita
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database:
+  username:
+  password:
