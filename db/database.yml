@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: tizi_development
+  database: postgres
   pool: 5
   username: vlad
   password: nikita
@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: tizi_test
+  database: postgres
   pool: 5
   username: vlad
   password: nikita
