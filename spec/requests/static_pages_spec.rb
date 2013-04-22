@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "StaticPages" do
 
 subject { page }
-
+let(:base_title){"TaxiZi. Use pre order and get best offer. Limo, vip-class sedan and van"}
   describe "Home page" do
   before { visit root_path }
    it { should have_selector('title',
@@ -22,7 +22,7 @@ subject { page }
 	end
 	it "should have the right title" do
   		page.should have_selector('title',
-                    :text => "TaxiZi | Help")
+                    :text => "#{base_title} | Help")
 	 end
   end
 
@@ -33,7 +33,7 @@ subject { page }
 	end
 	it "should have the right title" do
   		page.should have_selector('title',
-                    :text => "TaxiZi | About")
+                    :text => "#{base_title} | About")
 	end
   end
 
@@ -43,7 +43,7 @@ subject { page }
     	page.should have_selector('h1', text: 'Contact')
     end
     it "should have correct title" do
-    	page.should have_selector('title', text: 'TaxiZi | Contact')
+    	page.should have_selector('title', :text => "#{base_title} | Contact")
     end
   end
 end
