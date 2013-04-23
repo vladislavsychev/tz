@@ -46,4 +46,19 @@ let(:base_title){"TaxiZi. Use pre order and get best offer. Limo, vip-class seda
     	page.should have_selector('title', :text => "#{base_title} | Contact")
     end
   end
+ it "should have the right links on the layout" do
+    visit root_path
+    click_link "About"
+    page.should have_selector 'title', text: 'About'
+    click_link "Help"
+    page.should have_selector 'title', text: 'Help'
+    click_link "Contact"
+    page.should have_selector 'title', text: 'Contact'
+    click_link "Home"
+    page.should have_selector 'title', text: 'TaxiZi'
+    click_link "Sign up now!"
+    page.should have_selector 'title', text: 'TaxiZi'
+    click_link "TaxiZi"
+    page.should have_selector 'title', text: 'TaxiZi'
+  end
 end
