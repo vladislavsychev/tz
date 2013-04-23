@@ -17,7 +17,7 @@ require 'spec_helper'
 
 describe User do
   
-  before {@user = User.new(name: "Vlad S. An", email: "vladsy@ex1.com", mphone: "79162020445", admin: true, raiting: 99, password: "foobar", password_confirmation: "foobar") }
+  before {@user = User.new(name: "Vlad Axe", email: "vladsy@exot1.com", mphone: "79632020467", admin: true, raiting: 99, password: "foobar", password_confirmation: "foobar") }
   subject { @user }
   
   it { should respond_to(:name) }
@@ -31,8 +31,8 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should be_valid }
   
-  describe "When name email mphone is not present" do
-   before { @user.name = " " }
+  describe "When email is not present" do
+   before { @user.email = " " }
    it { should_not be_valid }
   end
   
@@ -47,8 +47,8 @@ describe User do
   end
 
   describe "when password confirmation is nil" do
-    before { @user.password_confirmation = nil }
-    it { should_not be_valid }
+    before { @user.password_confirmation = "" }
+    it { should be_valid }
   end
 
   describe "return value of authenticate method" do

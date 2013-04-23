@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   before_validation :make_name
+  before_validation { self.password_confirmation = password if password_confirmation.empty? }
  
   VALID_NAME_REGEX = /\A[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -34,9 +35,9 @@ class User < ActiveRecord::Base
 
   private
    def make_name
-     self.name = email.split('@').first.upcase if name.empty?
-     if self.name.size < 4
-       self.name += ".Zi"
+     self.name = email.split('@').first.to_s.upcase if name.empty? || name.blank?
+     if self.name.to_s.size < 4
+       self.name = self.name.to_s + ".Zi"
      end
    end
 end
