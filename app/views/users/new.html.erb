@@ -2,13 +2,14 @@
 <h1>Sign up here.</h1>
 <h3>All the wolrd hundreds consumers use the <%= link_to 'TaxiZi', about_path %> everyday. Now in Russia.</h3>
 
+<h2>Только желтые поля обязательны для заполнения.</h2>
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
 
      <%= render 'shared/error_messages' %>
 
-      <%= f.label :name, "Name (letters, digits etc)" %>
+      <%= f.label :name, "Name (minimum 4 letters, digits etc)" %>
       <%= f.text_field :name %>
 
       <%= f.label :email %>
@@ -17,7 +18,7 @@
       <%= f.label :mphone, "Mobile phone (only digits pls.)" %>
       <%= f.text_field :mphone %>
 
-      <%= f.label :password %>
+      <%= f.label :password, "Password (minimum 6 symbols)" %>
       <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "Password confirmation" %>

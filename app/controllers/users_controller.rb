@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if @user.save
         # Tell the UserMailer to send a welcome Email after save
         UserMailer.welcome_email(@user).deliver
+      flash[:success] = "Welcome to the TaxiZi! Good luck and best deal."
       redirect_to @user
     else
       render 'new'
