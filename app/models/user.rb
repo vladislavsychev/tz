@@ -16,7 +16,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :admin, :email, :moderator, :mphone, :name, :raiting, :password, :password_confirmation 
+  attr_accessible :email, :mphone, :name, :raiting, :password, :password_confirmation 
   
   has_secure_password
 
