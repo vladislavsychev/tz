@@ -6,25 +6,8 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
-
-     <%= render 'shared/error_messages' %>
-
-      <%= f.label :name, "Name (minimum 4 letters, digits etc)" %>
-      <%= f.text_field :name %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :mphone, "Mobile phone (only digits pls.)" %>
-      <%= f.text_field :mphone %>
-
-      <%= f.label :password, "Password (minimum 6 symbols)" %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Password confirmation" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Create my account", class: "btn btn-large btn-success" %>
+    <%= render 'fields', f: f %>
+    <%= f.submit "Create my account", class: "btn btn-large btn-success" %>
     <% end %>
   </div>
 </div>
