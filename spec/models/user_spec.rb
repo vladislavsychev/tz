@@ -2,22 +2,24 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  mphone     :string(255)
-#  raiting    :integer
-#  admin      :boolean
-#  moderator  :boolean
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  mphone          :string(255)
+#  raiting         :integer
+#  admin           :boolean
+#  moderator       :boolean
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
 #
 
 require 'spec_helper'
 
 describe User do
   
-  before {@user = User.new(name: "Vlad Axe", email: "vladsy@exot1.com", mphone: "79632020467", admin: true, raiting: 99, password: "foobar", password_confirmation: "foobar") }
+  before {@user = User.new(name: "Vlad Ande", email: "vladimir@exot1.com", mphone: "79662029467", admin: false, raiting: 99, password: "foobar", password_confirmation: "foobar") }
   subject { @user }
   
   it { should respond_to(:name) }

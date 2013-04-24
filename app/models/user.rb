@@ -2,21 +2,27 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  mphone     :string(255)
-#  raiting    :integer
-#  admin      :boolean
-#  moderator  :boolean
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  mphone          :string(255)
+#  raiting         :integer
+#  admin           :boolean
+#  moderator       :boolean
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
 #
 
 class User < ActiveRecord::Base
   attr_accessible :admin, :email, :moderator, :mphone, :name, :raiting, :password, :password_confirmation 
   
   has_secure_password
+
+#  has_many :offers, :dependent => :destroy
+#  has_many :contracts, :dependent => :destroy
+#  has_many :photos, :dependent => :destroy
 
   before_validation :make_name
   before_validation { self.password_confirmation = password if password_confirmation.empty? }
@@ -25,20 +31,27 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_MPHONE_REGEX = /\A\d{6,11}\z/
 
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :name, presence: true, format: { with: VALID_NAME_REGEX }
-  validates :mphone, presence: true, format: { with: VALID_MPHONE_REGEX }, uniqueness: true
+  validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :name, format: { with: VALID_NAME_REGEX }
+  validates :mphone, format: { with: VALID_MPHONE_REGEX }, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }  
   validates :password_confirmation, presence: true
 
   before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token
 
   private
+
    def make_name
      self.name = email.split('@').first.to_s.upcase if name.empty? || name.blank?
      if self.name.to_s.size < 4
        self.name = self.name.to_s + ".Zi"
      end
    end
+
+   def create_remember_token
+     self.remember_token = SecureRandom.urlsafe_base64
+   end
+
 end
 
