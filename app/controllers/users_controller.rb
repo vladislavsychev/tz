@@ -13,10 +13,12 @@ before_filter :admin_user,     only: [:destroy]
   end
 
   def new
-   @user = User.new
+    redirect_to(root_path) if signed_in?
+    @user = User.new
   end
 
   def create
+    redirect_to(root_path) if signed_in?
     @user = User.new(params[:user])
     if @user.save
         # Tell the UserMailer to send a welcome Email after save
