@@ -1,4 +1,6 @@
 Tz::Application.routes.draw do
+  resources :contracts
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 

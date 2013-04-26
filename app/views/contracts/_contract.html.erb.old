@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="offset2">
+<table cellpadding="10" cellspacing="2" align="left">
+  <tr>
+    <td rowspan="3"> Чего изволите? </td>
+    <td> <%= radio_button_tag(:t_car, "limo", true) %> </td>
+    <td> л и м у з и н </td>
+  </tr>
+  <tr>
+    <td><%= radio_button_tag(:t_car, "retro") %></td>
+    <td> ретро автомобиль </td>
+  </tr>
+  <tr>
+    <td><%= radio_button_tag(:t_car, "van") %></td>
+    <td> VIP минивен </td>
+  </tr>
+
+  <tr><th colspan ="3" ><hr/></th></tr>
+  <tr>
+    <td> Когда подать: </td>
+    <td><%= text_field_tag :date_rent, nil, placeholder: 'дд.мм.гггг', id: "datepicker"  %></td>
+    <td><%= text_field_tag :time_rent, nil, placeholder: '15:30' %> </td>
+  </tr> 
+  <tr>
+    <td> А на сколько часов арендуете: </td>
+    <td><%= number_field_tag :time_rent, "4", in: 2...24 %></td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td> Условия заказа и пожелания: </td>
+    <th colspan="2"><%= text_area_tag :body, nil, placeholder: "Подать Москва, ул.Смоленская д.10. Поедем в ЗАГС, на Красную площадь и в аэропорт Внуково. Там отпускаем машину. У невесты алергия на табачный дым. Нам нравится белый цвет.", rows: 4 %></th>
+  </tr> 
+  <tr><th colspan ="3" ><hr/></th></tr> 
+  <tr>
+    <td> Имя, мобильный телефон<br/>и email заказчика: </td>
+    <td><%= phone_field_tag :mphone, nil, placeholder: '79161112233' %></td>
+    <td><%= email_field_tag :email, nil, placeholder: 'email@mail.ru' %></td>
+  </tr> 
+  <tr>
+    <td></td>
+    <td><%= text_field_tag :name, nil, placeholder: 'Например Виктор' %></td>
+    <td><%= submit("Сделать предзаказ", class: "btn btn-large btn-success") %></td>
+  </tr> 
+</table>
+</div>
+</div>
+
+<script>
+  $(function() {
+    $("#datepicker").datepicker({ dateFormat: 'dd.mm.yy' });
+  });
+  </script>
+ <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+

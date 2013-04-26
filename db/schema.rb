@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424100525) do
+ActiveRecord::Schema.define(:version => 20130426132357) do
+
+  create_table "contracts", :force => true do |t|
+    t.integer  "t_car",             :limit => 2
+    t.string   "city_rent",         :limit => 99
+    t.date     "date_rent"
+    t.string   "time_rent",         :limit => 5
+    t.integer  "lease_time",        :limit => 2
+    t.text     "body_contract"
+    t.string   "contractor_mphone", :limit => 12
+    t.string   "contractor_email",  :limit => 140
+    t.string   "contractor_name",   :limit => 50
+    t.boolean  "active",                           :default => false
+    t.boolean  "close_contract",                   :default => false
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
+  end
+
+  add_index "contracts", ["date_rent", "active"], :name => "index_contracts_on_date_rent_and_active"
 
   create_table "users", :force => true do |t|
     t.string   "name"

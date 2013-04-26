@@ -1,0 +1,21 @@
+<% provide(:title, "#{@contract.id}") %>
+
+<div class="row">
+
+<h1>id: <%= @contract.id %></h1>
+<h2> <%= @contract.contractor_name %>
+ | <%= @contract.contractor_mphone %> 
+ | <%= @contract.contractor_email %></h2>
+
+<%= @contract.time_rent %> | 
+<%= @contract.date_rent %> <br/>
+<%= @contract.body_contract %> <br/>
+Время аренды: <%= @contract.lease_time %> часа/часов</br>
+
+<% unless @contract.active? %>
+<%= "ВВЕДИТЕ КОД ПОДТВЕРЖДЕНИЯ ПРИСЛАННЫЙ ВАМ НА EMAIL" %>
+      <%= render 'valid_contract' %>
+<% end %>
+
+
+</div>

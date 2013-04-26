@@ -1,13 +1,13 @@
 <%= render 'shared/error_messages' %>
 
 <%= f.label :name %>
-<%= f.text_field :name %>
+<%= f.text_field :name, placeholder: 'min. 4 letters and digits' %>
 
 <%= f.label :email %>
 <%= f.text_field :email %>
 
-<%= f.label :mphone, "Mobile phone (only digits pls.)" %>
-<%= f.text_field :mphone %>
+<%= f.label :mphone, "Mobile phone" %>
+<%= f.text_field :mphone, placeholder: 'only digits please' %>
 
 <%= f.label :password %>
 <%= f.password_field :password %>
