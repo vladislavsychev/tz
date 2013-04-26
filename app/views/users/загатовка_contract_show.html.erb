@@ -1,0 +1,14 @@
+# модель Contract должна иметь active поле boolean --- contract.active?
+# в текстовое поле пользователь вводет код активации
+# в скрытом поле передается параметр номера контракта для поиска в базе
+# в контроллере создается отдельный экшен valid
+#
+
+<% unless @contract.active?
+<%= form_tag("/contract/valid", :method => "get") do %>
+  <%= label_tag(:q, "Код активации:") %>
+  <%= text_field_tag(:q) %>
+  <%= hidden_field_tag(:contract_id, @contract.id) %>
+  <%= submit_tag("Подтвердить предзаказ") %>
+<% end %>
+<% end %> 
