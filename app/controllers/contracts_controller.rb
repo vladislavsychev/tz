@@ -21,7 +21,12 @@ class ContractsController < ApplicationController
   def valid
    @contract = Contract.find(params[:contract_id])
    if params[:q] == @contract.created_at.to_i.to_s.split('').reverse.join[0..5]
-   @contract.toggle!(:active)
+     @contract.toggle!(:active)
+     flash[:success] = "OK. Now the contract is active. Good luck!"
+     redirect_to @contract
+   else
+     flash[:error] = "Wrong number. Lets try more?"
+     redirect_to @contract
    end
   end
 end
