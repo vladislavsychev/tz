@@ -8,5 +8,6 @@ class CreateOffers < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :offers, [:contract_id, :user_id]
   end
 end
