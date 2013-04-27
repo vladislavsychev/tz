@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426132357) do
+ActiveRecord::Schema.define(:version => 20130427154546) do
 
   create_table "contracts", :force => true do |t|
-    t.integer  "t_car",             :limit => 2
     t.string   "city_rent",         :limit => 99
     t.date     "date_rent"
     t.string   "time_rent",         :limit => 5
@@ -27,9 +26,11 @@ ActiveRecord::Schema.define(:version => 20130426132357) do
     t.boolean  "close_contract",                   :default => false
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
+    t.string   "t_car",             :limit => 30
   end
 
   add_index "contracts", ["date_rent", "active"], :name => "index_contracts_on_date_rent_and_active"
+  add_index "contracts", ["t_car"], :name => "index_contracts_on_t_car"
 
   create_table "users", :force => true do |t|
     t.string   "name"

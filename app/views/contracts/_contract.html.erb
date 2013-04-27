@@ -1,10 +1,11 @@
 
 <li>
-     <%= contract.date_rent %> | <%= contract.lease_time %> часа/ов |
-   <%= link_to contract.body_contract, contract %>
+  <span class="timestamp"> <%= contract.t_car %> | <%= contract.date_rent %> | <%= contract.lease_time %> часа/ов </span>
 
+  <span class="content">   <%= link_to contract.body_contract, contract %>
+  </span>
   <% if !current_user.nil? && current_user.admin? %>
-|   <%= link_to "delete", contract, method: :delete, data: { confirm: "You sure?" } %>
+  <%= link_to "delete", contract, method: :delete, data: { confirm: "You sure?" } %>
 |   <%= link_to "edit", edit_contract_path(contract.id) %>
   <% end %>
 

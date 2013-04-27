@@ -3,7 +3,6 @@
 # Table name: contracts
 #
 #  id                :integer          not null, primary key
-#  t_car             :integer
 #  city_rent         :string(99)
 #  date_rent         :date
 #  time_rent         :string(5)
@@ -16,21 +15,23 @@
 #  close_contract    :boolean          default(FALSE)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  t_car             :string(30)
 #
 
 class Contract < ActiveRecord::Base
   attr_accessible :body_contract, :close_contract, :contractor_email, :contractor_mphone, :contractor_name, :date_rent, :time_rent, :lease_time, :t_car
 
+  default_scope order: 'contracts.date_rent'
+
   VALID_NAME_REGEX = /\A[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_MPHONE_REGEX = /\A\d{6,11}\z/
-  VALID_T_CAR_REGEX = /\A\d{1,2}\z/
   VALID_LEASE_TIME_REGEX = /\A\d{1,2}\z/
 
   validates :contractor_email, format: { with: VALID_EMAIL_REGEX }
   validates :contractor_name, format: { with: VALID_NAME_REGEX }
   validates :contractor_mphone, format: { with: VALID_MPHONE_REGEX }
-  validates :t_car, format: { with: VALID_T_CAR_REGEX }
+  validates :t_car, presence: true
   validates :lease_time, format: { with: VALID_LEASE_TIME_REGEX }
   validates :body_contract, presence: true, length: { maximum: 2048 }
   validates :date_rent, presence: true

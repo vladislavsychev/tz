@@ -1,8 +1,13 @@
 <% provide(:title, 'Все предзаказы') %>
-<h1>Все предзаказы</h1>
-
+<div class="row">
+<aside>
+</aside>
+<div class="offset3 span9">
+<h2>Предзаказы</h2>
 <%= will_paginate %>
-<ul class="users">
+<ol class="contracts">
 <%= render @contracts %>
-</ul>
+</ol>
 <%= will_paginate %>
+</div>
+</div>

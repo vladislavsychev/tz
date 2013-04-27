@@ -3,7 +3,6 @@
 # Table name: contracts
 #
 #  id                :integer          not null, primary key
-#  t_car             :integer
 #  city_rent         :string(99)
 #  date_rent         :date
 #  time_rent         :string(5)
@@ -16,6 +15,7 @@
 #  close_contract    :boolean          default(FALSE)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  t_car             :string(30)
 #
 
 require 'spec_helper'

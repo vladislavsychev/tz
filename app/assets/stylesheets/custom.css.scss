@@ -115,6 +115,8 @@ footer ul li {
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$grayLighter: #93a3a3;
+$grayLight: #1c7777;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -201,6 +203,36 @@ input {
     &:last-child {
       border-bottom: 1px solid $grayLighter;
     }
+  }
+}
+
+/* microposts */
+
+.contracts {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.content {
+  font-size: 1.1em;
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+  font-size: 0.9em;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
   }
 }
 

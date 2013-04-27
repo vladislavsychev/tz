@@ -1,4 +1,10 @@
 Tz::Application.routes.draw do
+  get "offers/index"
+
+  get "offers/new"
+
+  get "offers/show"
+
   resources :contracts 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
