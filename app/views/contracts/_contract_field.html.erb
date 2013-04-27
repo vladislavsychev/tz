@@ -1,0 +1,53 @@
+<%= render 'shared/contract_error_messages' %>
+<table cellpadding="10" cellspacing="2" align="left">
+  <tr>
+    <td rowspan="3"> <h3>Чего изволите?</h3> </td>
+    <td> <%= f.radio_button :t_car, "limo" %> </td>
+    <td> л и м у з и н </td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button(:t_car, "retro") %></td>
+    <td> ретро автомобиль </td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button(:t_car, "van") %></td>
+    <td> VIP минивен </td>
+  </tr>
+
+  <tr><th colspan ="3" ><hr/></th></tr>
+  <tr>
+    <td><h3> Когда подать:</h3> </td>
+    <td><%= f.text_field :date_rent, placeholder: 'дд.мм.гггг', id: "datepicker"  %></td>
+    <td><%= f.text_field :time_rent, placeholder: '15:30' %> </td>
+  </tr> 
+  <tr>
+    <td><h3> А на сколько часов арендуете:</h3> </td>
+    <td><%= f.number_field :lease_time, value: '4', in: 2...24 %></td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td><h3> Условия заказа и пожелания:</h3> </td>
+    <th colspan="2"><%= f.text_area :body_contract, placeholder: "Подать Москва, ул.Смоленская д.10. Поедем в ЗАГС, на Красную площадь и в аэропорт Внуково. Там отпускаем машину. У невесты алергия на табачный дым. Нам нравится белый цвет.", rows: 4 %></th>
+  </tr> 
+  <tr><th colspan ="3" ><hr/></th></tr> 
+  <tr>
+    <td><h3> Мобильный телефон<br/>и email заказчика:</h3> </td>
+    <td><%= f.phone_field :contractor_mphone, placeholder: '79161112233' %></td>
+    <td><%= f.email_field :contractor_email, placeholder: 'email@mail.ru' %></td>
+  </tr> 
+  <tr>
+    <td> <h3> Имя: </h3> </td>
+    <td><%= f.text_field :contractor_name, placeholder: 'Например Виктор' %></td>
+    <td><%= f.submit("Отправить предзаказ", class: "btn btn-large btn-success") %></td>
+  </tr> 
+</table>
+
+<script>
+  $(function() {
+    $("#datepicker").datepicker({ dateFormat: 'dd.mm.yy' });
+  });
+  </script>
+ <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+

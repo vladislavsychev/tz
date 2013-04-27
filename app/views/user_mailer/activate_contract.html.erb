@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Злраствуйте <%= @contract.contractor_name %></h1>
+    <p>
+      На сайте taxizi.ru был размещен привязанный к Вашему почтовому ящику предзаказ:</p>
+    <p>
+      <%= @contract.date_rent %> </br>
+      <%= @contract.body_contract %>
+    </p>
+    <p>
+      Если это были вы пожалуйста перейдите на сайт по адресу и активируйте предзаказ <%= @url %>.
+    </p>
+    <p>
+Код активации: <%= @contract.created_at.to_i.to_s.split('').reverse.join[0..5] %>
+    <p>Если это были не вы то ничего не делайте и предзаказ будет удален.</p>
+Не отвечайте на это висьмо он сгенерировано автоматической службой уведомления клиентов.
+  </body>
+</html>

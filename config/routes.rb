@@ -1,7 +1,5 @@
 Tz::Application.routes.draw do
-  match '/contracts/valid', to: 'contracts#valid'
-
-  resources :contracts
+  resources :contracts 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -12,6 +10,7 @@ Tz::Application.routes.draw do
   match '/signup', to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/contracts/:id/valid', to: 'contracts#valid'
 
 
   # The priority is based upon order of creation:

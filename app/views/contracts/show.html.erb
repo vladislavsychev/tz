@@ -12,10 +12,18 @@
 <%= @contract.body_contract %> <br/>
 Время аренды: <%= @contract.lease_time %> часа/часов</br>
 
-<% unless @contract.active? %>
-<%= "ВВЕДИТЕ КОД ПОДТВЕРЖДЕНИЯ ПРИСЛАННЫЙ ВАМ НА EMAIL" %>
-      <%= render 'valid_contract' %>
-<% end %>
 
+<% unless @contract.active? %>
+  <div class="span2">
+    <%= form_tag("/contracts/#{@contract.id}/valid", :method => "get") do %>
+      <%= render 'valid_field' %>
+      <%= submit_tag("Подтвердить предзаказ", class: "btn btn-large btn-success") %>
+    <% end %>
+  </div>
+<% end %>
+  <% if !current_user.nil? && current_user.admin? %>
+   <%= link_to "delete", @contract, method: :delete, data: { confirm: "You sure?" } %>
+|   <%= link_to "edit", edit_contract_path(@contract.id) %>
+  <% end %>
 
 </div>

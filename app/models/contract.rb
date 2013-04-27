@@ -19,7 +19,7 @@
 #
 
 class Contract < ActiveRecord::Base
-  attr_accessible :active, :body_contract, :close_contract, :contractor_email, :contractor_mphone, :contractor_name, :date_rent, :time_rent, :lease_time, :t_car
+  attr_accessible :body_contract, :close_contract, :contractor_email, :contractor_mphone, :contractor_name, :date_rent, :time_rent, :lease_time, :t_car
 
   VALID_NAME_REGEX = /\A[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

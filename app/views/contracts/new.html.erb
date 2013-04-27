@@ -1,9 +1,9 @@
-<% provide(:title, "Предзаказ") %>
+<% provide(:title, "Новый предзаказ") %>
 <h1>Заполните форму предзаказа.</h1>
 <div class="row">
   <div class="span10 offset1">
     <%= form_for(@contract) do |f| %>
-      <%= render 'contract', f: f %>
+      <%= render 'contract_field', f: f %>
 
     <% end %>
 

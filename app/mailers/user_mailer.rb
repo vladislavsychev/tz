@@ -12,4 +12,10 @@ class UserMailer < ActionMailer::Base
    @url = "http://taxizi.ru/signin"
    mail(:to => user.email, :bcc => "vladislav.sychev@gmail.com", :subject => "Update user information on the TaxiZi")
   end
+
+  def activate_contract_email(contract)
+    @contract = contract
+    @url = "http://taxizi.ru/contracts/#{@contract.id}"
+    mail(to: contract.contractor_email, bcc: "vladislav.sychev@gmail.com", subject: "Activation Code TaxiZi")
+  end
 end
