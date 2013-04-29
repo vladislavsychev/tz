@@ -7,7 +7,7 @@
    <section>
     <%= form_tag("/contracts/#{@contract.id}/valid", :method => "get") do %>
       <%= render 'valid_field' %>
-      <%= submit_tag("Подтвердить предзаказ", class: "btn btn-large btn-success") %>
+       <%= submit_tag("Подтвердить предзаказ", class: "btn btn-large btn-success") %>
  <% end %>
    </section>
 <% end %>
@@ -21,10 +21,10 @@
   </section>
   <section>
     
-<p class="text-success"> <%= link_to 'Разместите', new_contract_path %> предзаказ и выбирете лучшее предложение. Регистрация не требуется.</p> 
+<p class="muted"> <%= link_to 'Разместите', new_contract_path %> предзаказ и выбирете лучшее предложение. Регистрация не требуется.</p> 
 
-<p>Есть предложение? Вы должны <%= link_to "войти", signin_path %> на сайт под своим логином и паролем.</p>
-<p> Если вы еще не зарегистрировались сделайте это сейчас.</p>
+<p class="muted">Есть предложение? Вы должны <%= link_to "войти", signin_path %> на сайт под своим логином и паролем.</p>
+<p class="muted"> Если вы еще не зарегистрировались сделайте это сейчас.</p>
 
   </section>
    </aside>
