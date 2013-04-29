@@ -1,12 +1,8 @@
 Tz::Application.routes.draw do
-  get "offers/index"
-
-  get "offers/new"
-
-  get "offers/show"
 
   resources :contracts 
   resources :users
+  resources :offers, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'

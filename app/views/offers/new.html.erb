@@ -1,2 +1,10 @@
 <h1>Offers#new</h1>
 <p>Find me in app/views/offers/new.html.erb</p>
+
+<%= form_for @user do |f| %>
+  ...
+  <%= f.fields_for :offers do |ff |%>
+    <%= ff.hidden_field :contract_id %>
+    ...
+  <% end %>
+<% end %>

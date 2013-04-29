@@ -3,7 +3,18 @@
   <aside class="span4">
     <section>
 	<h1> <%= @user.name %> </h1>
-	<h3> < <%= @user.email %> > <%= @user.mphone %> </h3>
+	<h4> < <%= @user.email %> > <%= @user.mphone %> </h4>
+        <h5> level <%= @user.offers.count %> </h5>
+        
     </section>
   </aside>
+  <div class="span7">
+      <% if @contracts.any? %>
+       <h6> Смотрит на <%= @contracts.count %> предзаказов </h6>
+       <ol>
+          <%= render @contracts %>
+       </ol>
+  <% end%>
+
+  </div>
 </div>

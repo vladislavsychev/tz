@@ -21,6 +21,9 @@
 class Contract < ActiveRecord::Base
   attr_accessible :body_contract, :close_contract, :contractor_email, :contractor_mphone, :contractor_name, :date_rent, :time_rent, :lease_time, :t_car
 
+  has_many :offers, :dependent => :destroy, :order => 'offers.price DESC'
+  has_many :users, :through => :offers, :readonly => true
+
   default_scope order: 'contracts.date_rent'
 
   VALID_NAME_REGEX = /\A[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+\z/
@@ -29,7 +32,7 @@ class Contract < ActiveRecord::Base
   VALID_LEASE_TIME_REGEX = /\A\d{1,2}\z/
 
   validates :contractor_email, format: { with: VALID_EMAIL_REGEX }
-  validates :contractor_name, format: { with: VALID_NAME_REGEX }
+  validates :contractor_name, presence: true
   validates :contractor_mphone, format: { with: VALID_MPHONE_REGEX }
   validates :t_car, presence: true
   validates :lease_time, format: { with: VALID_LEASE_TIME_REGEX }

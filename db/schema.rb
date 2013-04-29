@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130427154546) do
+ActiveRecord::Schema.define(:version => 20130427185405) do
 
   create_table "contracts", :force => true do |t|
     t.string   "city_rent",         :limit => 99
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(:version => 20130427154546) do
 
   add_index "contracts", ["date_rent", "active"], :name => "index_contracts_on_date_rent_and_active"
   add_index "contracts", ["t_car"], :name => "index_contracts_on_t_car"
+
+  create_table "offers", :force => true do |t|
+    t.integer  "contract_id"
+    t.integer  "user_id"
+    t.integer  "price"
+    t.string   "adword"
+    t.boolean  "taken"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "offers", ["contract_id", "user_id"], :name => "index_offers_on_contract_id_and_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

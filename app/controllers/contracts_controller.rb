@@ -3,7 +3,10 @@ class ContractsController < ApplicationController
 before_filter :correct_code, only: [:valid, :update, :destroy]
 
   def index
-    @contracts = Contract.where(:active => true).paginate(page: params[:page])
+    @contracts = Contract.
+                 where(:active => true, :close_contract => false).
+                 where(["date_rent >= ?", Time.now]).
+                 paginate(page: params[:page])
   end
 
 
@@ -25,6 +28,10 @@ before_filter :correct_code, only: [:valid, :update, :destroy]
 
   def show
     @contract = Contract.find(params[:id])
+    @offers = @contract.offers.all
+    if signed_in?
+      @offer = current_user.offers.build(:contract_id => @contract.id)
+    end
   end
 
   def edit

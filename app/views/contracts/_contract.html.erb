@@ -1,14 +1,28 @@
 
 <li>
-  <span class="timestamp"> <%= contract.t_car %> | <%= contract.date_rent %> | <%= contract.lease_time %> часа/ов </span>
-
-  <span class="content">   <%= link_to contract.body_contract, contract %>
-  </span>
+  <span class="timestamp"> 
+     <%= contract.time_rent %>
+     <%= contract.date_rent.to_s(:ru_date) %> |  
+     <%= contract.t_car %> на <%= contract.lease_time %> часа/ов для
+     <%= contract.contractor_name %> 
   <% if !current_user.nil? && current_user.admin? %>
+ <br/> < <%= contract.contractor_email %> >
+  <%= contract.contractor_mphone %> 
+  [
   <%= link_to "delete", contract, method: :delete, data: { confirm: "You sure?" } %>
 |   <%= link_to "edit", edit_contract_path(contract.id) %>
+   ]
   <% end %>
+  
+   </span>
 
+  <span class="content">   
+     <%= link_to contract.body_contract, contract %>
+  </span>
+ <small>
+  Предложений 
+     <%= contract.offers.count %>
+ </small>
 </li>
 
 

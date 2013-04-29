@@ -1,13 +1,10 @@
 <% provide(:title, "Редактировать предзаказ") %>
-<h2>Редактировать предзаказ.</h2>
 <div class="row">
+<h2>Редактировать предзаказ.</h2>
+<h2>    <%= render 'valid_field'%> </h2>
   <div class="span10 offset1">
     <%= form_for(@contract) do |f| %>
-
-      <%= render 'valid_field' %>
-
       <%= render 'contract_field', f: f %>
-
     <% end %>
 
   </div>

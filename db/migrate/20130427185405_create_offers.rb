@@ -5,6 +5,7 @@ class CreateOffers < ActiveRecord::Migration
       t.integer :user_id
       t.integer :price
       t.string :adword
+      t.boolean :taken
 
       t.timestamps
     end

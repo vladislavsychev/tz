@@ -17,11 +17,11 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :mphone, :name, :raiting, :password, :password_confirmation 
-  
+    
   has_secure_password
 
-#  has_many :offers, :dependent => :destroy
-#  has_many :contracts, :dependent => :destroy
+  has_many :offers, :dependent => :destroy, :order => 'offers.created_at DESC'
+  has_many :contracts, :through => :offers, :readonly => true
 #  has_many :photos, :dependent => :destroy
 
   before_validation :make_name

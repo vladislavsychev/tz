@@ -1,0 +1,20 @@
+ <h1>Предзаказ</h1>
+
+<h4> 
+<%= @contract.t_car %> <br/>
+<%= @contract.date_rent.to_s(:ru_date) %>  в <%= @contract.time_rent %> <br/>
+<%= @contract.lease_time %> часов аренды<br/>
+для <%= @contract.contractor_name %> <br/>
+</h4>
+
+<% if !current_user.nil? && current_user.admin? %>
+ <%= @contract.contractor_mphone %> < <%= @contract.contractor_email %> >
+ <%= link_to "delete", @contract, method: :delete, data: { confirm: "You sure?" } %>
+| <%= link_to "edit", edit_contract_path(@contract.id) %>
+<% end%>
+<strong>><p> 
+<%= @contract.body_contract %>
+</p></strong>
+<hr/>
+ 
+

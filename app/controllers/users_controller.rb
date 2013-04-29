@@ -10,6 +10,9 @@ before_filter :admin_user,     only: [:destroy]
 
   def show
    @user = User.find(params[:id])
+   @contracts = @user.contracts.
+                 where(:active => true).
+                 where(["date_rent >= ?", Time.now])
   end
 
   def new
@@ -53,13 +56,6 @@ before_filter :admin_user,     only: [:destroy]
   end
 
   private
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in." unless signed_in?
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])

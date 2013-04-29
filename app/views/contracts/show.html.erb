@@ -1,29 +1,42 @@
 <% provide(:title, "#{@contract.id}") %>
 
 <div class="row">
-
-<h2>id: <%= @contract.id %></h2>
-<h2> <%= @contract.contractor_name %>
- | <%= @contract.contractor_mphone %> 
- | <%= @contract.contractor_email %></h2>
-
-<%= @contract.time_rent %> | 
-<%= @contract.date_rent %> <br/>
-<%= @contract.body_contract %> <br/>
-Время аренды: <%= @contract.lease_time %> часа/часов</br>
-
+   <aside class="span4">
 
 <% unless @contract.active? %>
-  <div class="span2">
+   <section>
     <%= form_tag("/contracts/#{@contract.id}/valid", :method => "get") do %>
       <%= render 'valid_field' %>
       <%= submit_tag("Подтвердить предзаказ", class: "btn btn-large btn-success") %>
-    <% end %>
-  </div>
+ <% end %>
+   </section>
 <% end %>
-  <% if !current_user.nil? && current_user.admin? %>
-   <%= link_to "delete", @contract, method: :delete, data: { confirm: "You sure?" } %>
-|   <%= link_to "edit", edit_contract_path(@contract.id) %>
-  <% end %>
+   
+   <section>
+    <% if @contract.active? && !@contract.close_contract? %>
+       <% if signed_in? %>
+           <%= render 'shared/offer_form' %>      
+       <% end %>
+    <% end %>
+  </section>
+  <section>
+    
+<p class="text-success"> <%= link_to 'Разместите', new_contract_path %> предзаказ и выбирете лучшее предложение. Регистрация не требуется.</p> 
 
+<p>Есть предложение? Вы должны <%= link_to "войти", signin_path %> на сайт под своим логином и паролем.</p>
+<p> Если вы еще не зарегистрировались сделайте это сейчас.</p>
+
+  </section>
+   </aside>
+
+ <div class="span7">
+  <%= render 'contract_preview_big_show' %>
+  <% if @contract.offers.any? %>
+       <h2> Всего <%= @contract.offers.count %> предложений </h2>
+       <ol>
+          <%= render @offers %>
+       </ol>
+  <% end%>
+
+ </div>
 </div>
