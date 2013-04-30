@@ -10,10 +10,24 @@ before_filter :admin_user,     only: [:destroy]
 
   def show
    @user = User.find(params[:id])
-   @contracts = @user.contracts.
-                 where(:active => true).
-                 where(["date_rent >= ?", Time.now]).
-                 uniq
+
+# contracts with taken offer of user
+   @contracts_id_mytaken = @user.offers.
+                           where(:taken => true).map(&:contract_id).uniq  
+   @contracts_taken = @user.contracts.
+                     where("contract_id IN (?)", @contracts_id_mytake).uniq
+
+# contracts with nottaken offers of user
+   @contracts_id_nottaken = @user.offers.
+                           where(:taken => nil).map(&:contract_id).uniq
+
+   @contracts_nottaken = @user.contracts.
+                     where("contract_id IN (?)", @contracts_id_nottaken).
+                     where(:close_contract => false).
+                     where(["date_rent >= ?", Time.now]).uniq
+
+   @contracts = @contracts_nottaken
+   
   end
 
   def new

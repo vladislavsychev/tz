@@ -23,10 +23,6 @@ class OffersController < ApplicationController
     end
   end
 
-  def taken
-    params[]
-  end
-
 private
 
     def correct_user

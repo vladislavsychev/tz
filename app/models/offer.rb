@@ -7,9 +7,9 @@
 #  user_id     :integer
 #  price       :integer
 #  adword      :string(255)
-#  taken       :boolean
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  taken       :boolean          default(FALSE)
 #
 
 class Offer < ActiveRecord::Base
