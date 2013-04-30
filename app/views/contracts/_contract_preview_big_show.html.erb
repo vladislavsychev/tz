@@ -1,7 +1,9 @@
- <h1>Предзаказ</h1>
-
+<h1>Предзаказ</h1>
 <h4> 
 <ul>
+<% if @contract.close_contract? %>
+<li> Закрыт</li>
+<% end %>
 <li><%= @contract.t_car %> </li>
 <li><%= @contract.date_rent.to_s(:ru_date) %> в <%= @contract.time_rent %> </li><li><%= @r_hour = @contract.lease_time %> 
   <% if @r_hour > 4 %> 

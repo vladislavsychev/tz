@@ -12,7 +12,8 @@ before_filter :admin_user,     only: [:destroy]
    @user = User.find(params[:id])
    @contracts = @user.contracts.
                  where(:active => true).
-                 where(["date_rent >= ?", Time.now])
+                 where(["date_rent >= ?", Time.now]).
+                 uniq
   end
 
   def new

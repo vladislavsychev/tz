@@ -1,8 +1,13 @@
 
 <li>
   <span class="timestamp"> 
-     <%= contract.time_rent %>
+     <% if contract.close_contract == true %>
+       <b>
+         ЗАКРЫТ! |
+       </b>
+     <% end %>
      <%= contract.date_rent.to_s(:ru_date) %> |  
+     <%= contract.time_rent %>
      <%= contract.t_car %> на <%= contract.lease_time %> часа/ов для
      <%= contract.contractor_name %> 
   <% if !current_user.nil? && current_user.admin? %>

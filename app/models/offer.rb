@@ -18,7 +18,7 @@ class Offer < ActiveRecord::Base
   belongs_to :user
   belongs_to :contract
 
-  default_scope :order => 'offers.price DESC'
+#  default_scope :order => 'offers.price DESC'
 
 # полагаю что цена не будет меньше трех цифр и больше 6  
   VALID_PRICE_REGEX = /\A\d{3,6}\z/

@@ -1,21 +1,41 @@
 class OffersController < ApplicationController
 
-  before_filter :signed_in_user
+  before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :correct_user, only: :destroy
 
   def create
     store_location
     @contract = Contract.find(params[:offer][:contract_id])
-    @offer = current_user.offers.build(params[:offer]) unless current_user.nil?
-    if @offer.save
-      flash[:success] = "Your offer put in."
+    if !@contract.close_contract? && current_user.offers.create(params[:offer])
+       flash[:success] = "Your offer put on."
     else
-      flash[:error] = "Something wrong! Your offer reject."
+       flash[:error] = "Your offer reject."
     end 
     redirect_to @contract
   end
 
   def destroy
-    if !current_user.nil? && current_user.admin?
+    @offer.destroy
+    if current_user.admin? 
+      redirect_to @offer.contract  
+    else
+      redirect_to current_user
     end
   end
+
+  def taken
+    params[]
+  end
+
+private
+
+    def correct_user
+        if current_user.admin?
+          @offer = Offer.find_by_id(params[:id])
+        else 
+          @offer = current_user.offers.find_by_id(params[:id])
+        end
+      redirect_to root_url if @offer.nil? || @offer.contract.close_contract?
+    end
+
 end

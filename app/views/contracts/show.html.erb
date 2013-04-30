@@ -29,10 +29,19 @@
   </section>
    </aside>
 
- <div class="span7">
+ <div class="span8">
   <%= render 'contract_preview_big_show' %>
   <% if @contract.offers.any? %>
-       <h2> Всего <%= @contract.offers.count %> предложений </h2>
+       <h2> Всего <%= @c_o_c = @contract.offers.count %> 
+         <% @c_o_c = @c_o_c.to_s.split('')[-1].to_i %>
+         <% if @c_o_c > 4  or @c_o_c  == 0 %>
+            предложений
+         <% elsif @c_o_c == 1 %> 
+            предложениe
+         <% else %>
+            предложения
+         <% end %>
+       </h2>
        <ol>
           <%= render @offers %>
        </ol>

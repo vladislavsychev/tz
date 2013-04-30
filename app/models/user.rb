@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     
   has_secure_password
 
-  has_many :offers, :dependent => :destroy, :order => 'offers.created_at DESC'
+  has_many :offers, :dependent => :destroy
   has_many :contracts, :through => :offers, :readonly => true
 #  has_many :photos, :dependent => :destroy
 

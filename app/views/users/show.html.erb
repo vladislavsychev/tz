@@ -8,9 +8,19 @@
         
     </section>
   </aside>
-  <div class="span7">
+  <div class="span8">
       <% if @contracts.any? %>
-       <h6> Смотрит на <%= @contracts.count %> предзаказов </h6>
+       <h1> Смотрит на <%= @contract_c = @contracts.count %> 
+         <% @contract_c = @contract_c.to_s.split('')[-1].to_i %>
+         <% if @contract_c > 4  or @contract_c  == 0 %>
+            предзаказов
+         <% elsif @c_o_c == 1 %> 
+            предзаказ
+         <% else %>
+            предзаказа
+         <% end %>
+        </h1>
+
        <ol>
           <%= render @contracts %>
        </ol>
