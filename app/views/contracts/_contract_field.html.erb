@@ -20,13 +20,13 @@
     <td>
       <div class="input-prepend">
        <span class="add-on">дд.мм.гггг</span>
-<%= f.text_field :date_rent, placeholder: '08.03.2013', id: "datepicker", class: "span2"  %>
+<%= f.text_field :date_rent, placeholder: '08.03.2013', id: "datepicker", class: "input-small"  %>
       </div>
     </td>
     <td>
-       <div class="input-prepend">
+       <div align="right" class="input-prepend">
        <span class="add-on">чч:мм</span>
-<%= f.text_field :time_rent, placeholder: '15:30', class: "span2" %>
+<%= f.text_field :time_rent, placeholder: '15:30', class: "input-small" %>
        </div>
     </td>
   </tr> 
@@ -34,7 +34,7 @@
     <td><h5>А на сколько часов арендуете:</h5> </td>
     <td>
        <div class="input-prepend">
-       <%= f.number_field :lease_time, value: '2', in: 2...24, class: 'span1' %>
+       <%= f.number_field :lease_time, value: '2', in: 2...24, class: 'input-small' %>
        <span class="add-on">часа/часов</span>
        </div>
      </td>
@@ -50,13 +50,13 @@
     <td>
       <div class="input-prepend">
        <span class="add-on">+7</span>
-        <%= f.phone_field :contractor_mphone, placeholder: '9161112233', class: "span2" %>
+        <%= f.phone_field :contractor_mphone, placeholder: '9161112233', class: "input-medium" %>
        </div>
     </td>
     <td>
-      <div class="input-prepend">
+      <div align="right"  class="input-prepend">
        <span class="add-on">@</span>
-        <%= f.email_field :contractor_email, placeholder: 'email@mail.ru', class: "span3" %>
+        <%= f.email_field :contractor_email, placeholder: 'email@mail.ru', class: "input-medium" %>
       </div>
     </td>
   </tr> 
@@ -65,10 +65,10 @@
     <td>
         <div class="input-prepend">
         <span class="add-on">:)</span>
-        <%= f.text_field :contractor_name, placeholder: 'Например Виктор', class: "span2" %>
+        <%= f.text_field :contractor_name, placeholder: 'Например Виктор', class: "input-medium" %>
         </div>
     </td>
-    <td><%= f.submit("Отправить предзаказ", class: "btn btn-large btn-success") %></td>
+    <td><%= f.submit("Отправить заявку", class: "btn btn-success") %></td>
   </tr> 
 </table>
 

@@ -1,6 +1,6 @@
 class ContractsController < ApplicationController
 
-before_filter :correct_code, only: [:valid, :update, :destroy]
+before_filter :correct_code, only: [:valid, :close, :update, :destroy]
 
   def index
     @contracts = Contract.
@@ -28,9 +28,15 @@ before_filter :correct_code, only: [:valid, :update, :destroy]
 
   def show
     @contract = Contract.find(params[:id])
-    @offers = @contract.offers.all
-    if signed_in?
-      @offer = current_user.offers.build(:contract_id => @contract.id)
+    unless @contract.close_contract?
+       @offers = @contract.offers.all
+
+       if signed_in?
+         @offer = @current_user.offers.build(:contract_id => @ccontract.id)
+       end
+
+    else
+       @offers = @contract.offers.where(:taken => true)
     end
   end
 
@@ -53,7 +59,15 @@ before_filter :correct_code, only: [:valid, :update, :destroy]
       @contract.toggle!(:active)
       flash[:success] = "Now the pre order is active."
     end
-      redirect_to @contract
+      redirect_to @contract || root_path
+  end
+
+  def close
+     if correct_code
+       @contract.toggle!(:close_contract)
+       flash[:success] = "Now the pre order is finish"
+     end
+       redirect_to @contract || root_path
   end
 
   def destroy
@@ -62,7 +76,7 @@ before_filter :correct_code, only: [:valid, :update, :destroy]
       flash[:success] = "Pre order destroyed."
       redirect_to contracts_url
     else
-      redirect_to @contract
+      redirect_to @contract || root_path
     end
   end
 

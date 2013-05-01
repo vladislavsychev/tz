@@ -1,10 +1,9 @@
-<h2>Предзаказ</h2>
+<h1><%= @contract.t_car %></h1>
 <h4> 
 <ul>
 <% if @contract.close_contract? %>
-<li> Закрыт</li>
+<li> Закрыта</li>
 <% end %>
-<li><%= @contract.t_car %> </li>
 <li><%= @contract.date_rent.to_s(:ru_date) %> в <%= @contract.time_rent %> </li><li><%= @r_hour = @contract.lease_time %> 
   <% if @r_hour > 4 %> 
      часов аренды</li>
@@ -21,11 +20,7 @@
 | <%= link_to "edit", edit_contract_path(@contract.id) %>
 <% end %>
 
-  <p>    
-     <strong> 
-       <%= @contract.body_contract %>
-    </strong>
-  </p>
+  <p> <%= @contract.body_contract %> </p>
 <hr/>
  
 

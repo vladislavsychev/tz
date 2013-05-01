@@ -3,12 +3,21 @@
      <%= link_to offer.user.name, user_path(offer.user) %> =
      <%= offer.price %> рублей.
   </span>
-  <span class="timestamp">
-    <%= offer.adword %>
-  </span>
+
+  <p> <%= offer.adword %> </p> 
+
+  <small>
+
   <% if !current_user.nil? && current_user.admin? %>
-  <br/>  <%= link_to 'delete', offer, method: :delete, data: {confirm: "Delete offer?"} %>
-   <% end %>
+    <%= link_to 'delete', offer, method: :delete, data: {confirm: "Delete offer?"} %>
+  <% end %>
+
+  <% if current_user.nil? && offer.contract.close_contract == false %>
+    <%= link_to 'Принять предложение', bang_path(offer.id) %>
+  <% end %>
+
+  </small>
+
 </li>
 <hr/>
 

@@ -13,7 +13,8 @@ Tz::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/contracts/:id/valid', to: 'contracts#valid'
-
+  match '/contracts/:id/close', to: 'contracts#close'
+  match '/offers/:id/bang', to: 'offers#bang', as: 'bang'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

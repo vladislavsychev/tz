@@ -3,37 +3,55 @@
 <div class="row">
    <aside class="span4">
 
+
 <% unless @contract.active? %>
-   <section>
+   <section>  
     <%= form_tag("/contracts/#{@contract.id}/valid", :method => "get") do %>
       <%= render 'valid_field' %>
-       <%= submit_tag("Подтвердить предзаказ", class: "btn btn-large btn-success") %>
- <% end %>
+       <%= submit_tag("Подтвердить заявку", class: "btn btn-success") %>
    </section>
-<% end %>
-   
-   <section>
-    <% if @contract.active? && !@contract.close_contract? %>
-       <% if signed_in? %>
-           <%= render 'shared/offer_form' %>      
-       <% end %>
     <% end %>
-  </section>
+<% end %>
+<% if  @contract.active? && !@contract.close_contract? %>
+      <% if signed_in? %>
+        <section>   
+          <%= render 'shared/offer_form' %>
+        </section>
+      <% else %>
+       <section>
+         <p class="muted" align="justify"> Если вы владелец заявки вы имеете право закрыть свою завку в любой момент. Принятие любого предложения закроет заявку автоматически.
+         </p>
+          <%= form_tag("/contracts/#{@contract.id}/close", :method => "get") do %>
+            <%= render 'valid_field' %>
+            <%= submit_tag("Закрыть заявку", class: "btn btn-mini") %>
+          <% end %>
+        </section>
+        <section>   
+           <p class="muted"  align="justify"> <%= link_to 'Разместите', new_contract_path %> заявку и выбирете лучшее предложение. Регистрация не требуется.</p> 
+           <p class="muted"  align="justify">Есть предложение? Вы должны <%= link_to "войти", signin_path %> на сайт под своим логином и паролем.</p>
+           <p class="muted"  align="justify"> Если вы еще не зарегистрировались сделайте это сейчас. <%= link_to 'Регистрация.', signup_path %> </p>
+        </section>
+      <% end %>
+<% end %>
+<% if @contract.close_contract? %>
   <section>
-    
-<p class="muted"> <%= link_to 'Разместите', new_contract_path %> предзаказ и выбирете лучшее предложение. Регистрация не требуется.</p> 
-
-<p class="muted">Есть предложение? Вы должны <%= link_to "войти", signin_path %> на сайт под своим логином и паролем.</p>
-<p class="muted"> Если вы еще не зарегистрировались сделайте это сейчас.</p>
-
+   <h4>Заявка закрыта.</h4>
+   <p class="muted">После закрытия заявки новые предложения не принимаются.</p>
   </section>
-   </aside>
+<% end %>
+ 
+ </aside>
 
  <div class="span8">
   <%= render 'contract_preview_big_show' %>
-  <% if @contract.offers.any? %>
-       <h2> Всего <%= @c_o_c = @contract.offers.count %> 
+
+  <% if !@contract.close_contract? %>
+
+     <% if !@offers.nil? %>
+       <h3>
+        <%= @c_o_c = @offers.count %> 
          <% @c_o_c = @c_o_c.to_s.split('')[-1].to_i %>
+
          <% if @c_o_c > 4  or @c_o_c  == 0 %>
             предложений
          <% elsif @c_o_c == 1 %> 
@@ -41,11 +59,27 @@
          <% else %>
             предложения
          <% end %>
-       </h2>
+
+        </h3>
+        <ol>
+           <%= render @offers %>
+        </ol>
+      
+     <% end %>
+
+   <% else %>
+
+     <% if !@offers.nil? %>
+       <h3> Принятое предложениe </h3>
        <ol>
           <%= render @offers %>
        </ol>
-  <% end%>
+     <% else %>
+        <h3> Нет принятых предложений </h3>
+     <% end %>
+
+   <% end %>
+
 
  </div>
 </div>
