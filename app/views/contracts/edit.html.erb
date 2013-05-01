@@ -1,7 +1,7 @@
 <% provide(:title, "Редактировать заявку") %>
 <div class="row">
 <h2>Редактировать.</h2>
-<h3>    <%= render 'valid_field'%> </h3>
+<h3>    <%= render 'shared/valid_field'%> </h3>
   <div class="span10 offset1">
     <%= form_for(@contract) do |f| %>
      <%= render 'shared/error_messages', object: f.object %>

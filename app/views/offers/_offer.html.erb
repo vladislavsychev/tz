@@ -13,7 +13,7 @@
   <% end %>
 
   <% if current_user.nil? && offer.contract.close_contract == false %>
-    <%= link_to 'Принять предложение', bang_path(offer.id) %>
+    <%= link_to 'принять предложение',  offer_path(offer.id) %>      
   <% end %>
 
   </small>

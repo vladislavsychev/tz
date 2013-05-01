@@ -2,6 +2,11 @@ class OffersController < ApplicationController
 
   before_filter :signed_in_user, only: [:create, :destroy]
   before_filter :correct_user, only: :destroy
+  before_filter :correct_code, only: :bang
+
+  def show
+     @offer = Offer.find(params[:id])
+  end
 
   def create
 #    store_location
@@ -50,6 +55,10 @@ private
           @offer = current_user.offers.find_by_id(params[:id])
         end
       redirect_to root_url if @offer.nil? || @offer.contract.close_contract?
+    end
+
+    def correct_code
+       redirect_to root_path unless params[:q] == Offer.find(params[:id]).contract.created_at.to_i.to_s.split('').reverse.join[0..5]
     end
 
 end

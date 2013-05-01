@@ -1,2 +1,10 @@
-<h1>Offers#show</h1>
-<p>Find me in app/views/offers/show.html.erb</p>
+<h2>Согласие на принятие предложения о исполнении заявки и обмене контактами с исполнителем.</h2>
+       <p> <strong><%= link_to @offer.user.name, @offer.user %> предлагает исполнить вашу заявку за <%= @offer.price %> рублей.</strong> </p>
+ <p align="right">    <i> <%= @offer.adword %> </i> </p>
+
+<hr/>
+       <p align="justify"> Если Вы согласны введите код активации и нажмите на кнопку "Принять предложение". После этого Вам будут высланы телефоны и email друг друга. </p>
+     <%= form_tag("/offers/#{@offer.id}/bang", :method => "get") do %>
+    Код активации <%= text_field_tag(:q, nil, placeholder: '**', class: "input-small") %>
+      <%= submit_tag("Принять предложение", class: "btn btn-small btn-success") %>
+     <% end %>

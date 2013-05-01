@@ -7,7 +7,7 @@
 <% unless @contract.active? %>
    <section>  
     <%= form_tag("/contracts/#{@contract.id}/valid", :method => "get") do %>
-      <%= render 'valid_field' %>
+      <%= render 'shared/valid_field' %>
        <%= submit_tag("Подтвердить заявку", class: "btn btn-success") %>
    </section>
     <% end %>
@@ -22,7 +22,7 @@
          <p class="muted" align="justify"> Если вы владелец заявки вы имеете право закрыть свою завку в любой момент. Принятие любого предложения закроет заявку автоматически.
          </p>
           <%= form_tag("/contracts/#{@contract.id}/close", :method => "get") do %>
-            <%= render 'valid_field' %>
+            <%= render 'shared/valid_field' %>
             <%= submit_tag("Закрыть заявку", class: "btn btn-mini") %>
           <% end %>
         </section>
@@ -64,7 +64,7 @@
         <ol>
            <%= render @offers %>
         </ol>
-      
+ 
      <% end %>
 
    <% else %>
@@ -83,3 +83,4 @@
 
  </div>
 </div>
+

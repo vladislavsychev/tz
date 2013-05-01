@@ -2,7 +2,7 @@ Tz::Application.routes.draw do
 
   resources :contracts 
   resources :users
-  resources :offers, only: [:create, :destroy]
+  resources :offers, only: [:show, :create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
