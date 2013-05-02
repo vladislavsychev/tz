@@ -8,13 +8,18 @@
         <span class="badge badge-success"><%= @user.offers.count %></span>
     
     <span class="badge badge-info">Фотографии</span>
-      <% @user.attached_assets.each do |use| %>
-      <%= image_tag(use.asset.url(:middle)) %>
-       <span class="label labal-inverse">
-        <%= use.asset.url.split('/').last.split('?').first %>
-       </span> 
+     <% if @user.attached_assets.size > 0 %>
+       <% @user.attached_assets.each do |use| %>
+        <%= image_tag(use.asset.url(:middle)) %>
+         <span class="label labal-inverse">
+           <%= use.asset.url.split('/').last.split('?').first %>
+         </span>
+        <% end %>
+      <% else %>
+         <%= image_tag('default_photo.jpg') %>      
+      <% end%>
        <br/>
-    <% end %>
+
     </section>
   </aside>
   <div class="span8">

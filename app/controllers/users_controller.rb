@@ -74,11 +74,15 @@ before_filter :admin_user,     only: [:destroy]
 # begin new destroy for pictures
   def delete_asset
     user = User.find(params[:user_id])
-      asset = user.attached_assets.find(params[:pic])
-      asset.asset.clear
-      asset.destroy
-      user.save(:validate => false)
-   redirect_to edit_user_path(current_user)
+      if user == current_user
+         asset = user.attached_assets.find(params[:pic])
+         asset.asset.clear
+         asset.destroy
+         user.save(:validate => false)
+         redirect_to edit_user_path(current_user)
+      else
+         redirect_to root_path
+      end
   end
 
   private

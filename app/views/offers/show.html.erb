@@ -1,6 +1,39 @@
+<% provide(:title, "Принять предложение")%>
+<!-- Carousel -->
+
+<% size_collection = @offer.user.attached_assets.size %>
+<% if size_collection > 0 %>
+<div id="myCarousel" class="carousel slide">
+  <ol class="carousel-indicators">
+   <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+     <% size = 1 %>
+     <% while size < size_collection %>
+       <li data-target="#myCarousel" data-slide-to="<%= size %>" ></li>
+      <% size = size + 1 %>
+     <% end %>
+  </ol>
+
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+    <% photo_item_class = 'active item' %>
+       <% @offer.user.attached_assets.each do |use| %>
+       <div align='center' class="<%= photo_item_class %>"><%= image_tag(use.asset.url(:normal)) %> </div>
+       <% photo_item_class = 'item' %>
+      <% end %>
+    </div>
+
+    <!-- Carousel nav -->
+       <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+       <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+<% else %>
+         <center><%= image_tag('default_photo.jpg') %></center>      
+<% end%>
+
 <h2>Согласие на принятие предложения о исполнении заявки и обмене контактами с исполнителем.</h2>
        <p> <strong><%= link_to @offer.user.name, @offer.user %> предлагает исполнить вашу заявку за <%= @offer.price %> рублей.</strong> </p>
- <p align="right">    <i> <%= @offer.adword %> </i> </p>
+ <p align="right">    <i> <%= wrap(@offer.adword) %> </i> </p>
 
 <hr/>
        <p align="justify"> Если Вы согласны введите код активации и нажмите на кнопку "Принять предложение". После этого Вам будут высланы телефоны и email друг друга. </p>

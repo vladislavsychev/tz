@@ -8,6 +8,7 @@ Tz::Application.routes.draw do
   resources :users
   resources :offers, only: [:show, :create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :attached_assets, only: [:show]
 
   root to: 'static_pages#home'
   match '/help', to: 'static_pages#help'
