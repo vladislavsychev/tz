@@ -1,18 +1,19 @@
 <h1><%= @contract.t_car %></h1>
-<h4> 
-<ul>
-<% if @contract.close_contract? %>
-<li> Закрыта</li>
-<% end %>
-<li><%= @contract.date_rent.to_s(:ru_date) %> в <%= @contract.time_rent %> </li><li><%= @r_hour = @contract.lease_time %> 
+ 
+  <ul>
+    <% if @contract.close_contract? %>
+      <li><span class="badge badge-error"> Закрыта</span></li>
+    <% end %>
+      <li><span class="badge badge-warning"><%= @contract.date_rent.to_s(:ru_date) %> в <%= @contract.time_rent %></span> </li>
+      <li><span class="badge badge-success"><%= @r_hour = @contract.lease_time %> 
   <% if @r_hour > 4 %> 
-     часов аренды</li>
+     часов аренды</span></li>
   <% else %>
-     часа аренды</li>
+     часа аренды</span></li>
   <% end %>
-<li>для <%= @contract.contractor_name %> </li>
+<li><span class="badge">для <%= @contract.contractor_name %></span></li>
 </ul>
-</h4>
+
 
 <% if !current_user.nil? && current_user.admin? %>
  <%= @contract.contractor_mphone %> < <%= @contract.contractor_email %> >

@@ -5,7 +5,7 @@
 <h2>Можете заполнить только желтые поля.</h2>
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
+    <%= form_for @user, :html => { :multipart => true } do |f| %>
      <%= render 'shared/error_messages', object: f.object %>
       <%= render 'fields', f: f %>
        <%= f.submit "Create my account", class: "btn btn-large btn-success" %>

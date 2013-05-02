@@ -1,23 +1,33 @@
-<li id="<%= offer.id %>">
-  <span class="content">
-     <%= link_to offer.user.name, user_path(offer.user) %> =
-     <%= offer.price %> рублей.
-  </span>
+<li id="<%= offer.id %>" class="span4">
+   <div class="thumbnail">  
+     <%  use = offer.user.attached_assets.first %>
+       <% if use.nil? %>
+         <%= image_tag('default_photo.jpg') %>
+         <small>...</small>
+         
+       <% else %>
+         <%= image_tag(use.asset.url(:middle)) %>
+         <small> 
+           <%= link_to 'В большом разрешении', use.asset.url %></small>
+       <% end %>
 
-  <p> <%= offer.adword %> </p> 
+       <h1><%= offer.price %> рублей.</h1>
+       <p> <%= offer.adword %>
+         <%= link_to offer.user.name, user_path(offer.user) %></p>
+       <hr/>
 
   <small>
+    <% if !current_user.nil? && current_user.admin? %>
+      <%= link_to 'delete', offer, method: :delete, data: {confirm: "Delete offer?"} %>
+    <% end %>
 
-  <% if !current_user.nil? && current_user.admin? %>
-    <%= link_to 'delete', offer, method: :delete, data: {confirm: "Delete offer?"} %>
-  <% end %>
-
-  <% if current_user.nil? && offer.contract.close_contract == false %>
-    <%= link_to 'принять предложение',  offer_path(offer.id) %>      
-  <% end %>
+    <% if current_user.nil? && offer.contract.close_contract == false %>
+      <%= link_to 'принять предложение',  offer_path(offer.id) %>      
+    <% end %>
 
   </small>
 
+ </div>
 </li>
-<hr/>
+
 

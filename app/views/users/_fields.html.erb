@@ -13,3 +13,5 @@
 
 <%= f.label :password_confirmation, "Confirm Password" %>
 <%= f.password_field :password_confirmation %>
+<h5>Добавить фото автомобиля? Просто.</h5> 
+<%= file_field_tag('user_attached_assets_asset', multiple: true, size: "15", name: "user[attached_assets_attributes][][asset]", placeholder: "Выбрать фотографии", class: "btn btn-small") %>

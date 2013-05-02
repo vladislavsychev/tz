@@ -53,7 +53,8 @@ before_filter :admin_user,     only: [:destroy]
   end
 
   def update
-#   @user = User.find(params[:id])
+    @user = User.find(params[:id])
+    
     if @user.update_attributes(params[:user])
     UserMailer.update_email(@user).deliver
       flash[:success] = "Profile updated"
@@ -68,6 +69,16 @@ before_filter :admin_user,     only: [:destroy]
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_url
+  end
+
+# begin new destroy for pictures
+  def delete_asset
+    user = User.find(params[:user_id])
+      asset = user.attached_assets.find(params[:pic])
+      asset.asset.clear
+      asset.destroy
+      user.save(:validate => false)
+   redirect_to edit_user_path(current_user)
   end
 
   private

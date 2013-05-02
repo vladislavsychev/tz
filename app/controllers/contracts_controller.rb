@@ -32,7 +32,7 @@ before_filter :correct_code, only: [:valid, :close, :update, :destroy]
        @offers = @contract.offers.all
 
        if signed_in?
-         @offer = @current_user.offers.build(:contract_id => @ccontract.id)
+         @offer = @current_user.offers.build(:contract_id => @contract.id)
        end
 
     else

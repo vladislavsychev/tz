@@ -1,5 +1,9 @@
 Tz::Application.routes.draw do
 
+  resources :users do
+    get 'delete_asset' => "users#delete_asset"
+  end
+
   resources :contracts 
   resources :users
   resources :offers, only: [:show, :create, :destroy]
@@ -15,6 +19,7 @@ Tz::Application.routes.draw do
   match '/contracts/:id/valid', to: 'contracts#valid'
   match '/contracts/:id/close', to: 'contracts#close'
   match '/offers/:id/bang', to: 'offers#bang', as: 'bang'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

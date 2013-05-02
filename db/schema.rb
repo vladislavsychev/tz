@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430201454) do
+ActiveRecord::Schema.define(:version => 20130501161810) do
+
+  create_table "attached_assets", :force => true do |t|
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+    t.integer  "attachable_id"
+    t.integer  "attachable_type"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "contracts", :force => true do |t|
     t.string   "city_rent",         :limit => 99

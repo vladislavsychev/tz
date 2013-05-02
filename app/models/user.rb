@@ -16,13 +16,14 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :mphone, :name, :raiting, :password, :password_confirmation 
+  attr_accessible :email, :mphone, :name, :raiting, :password, :password_confirmation, :attached_assets_attributes 
     
   has_secure_password
 
   has_many :offers, :dependent => :destroy
   has_many :contracts, :through => :offers, :readonly => true
-#  has_many :photos, :dependent => :destroy
+  has_many :attached_assets, :as => :attachable
+  accepts_nested_attributes_for :attached_assets, :allow_destroy => true
 
   before_validation :make_name
   before_validation { self.password_confirmation = password if password_confirmation.empty? }

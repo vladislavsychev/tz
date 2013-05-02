@@ -19,12 +19,13 @@
         </section>
       <% else %>
        <section>
-         <p class="muted" align="justify"> Если вы владелец заявки вы имеете право закрыть свою завку в любой момент. Принятие любого предложения закроет заявку автоматически.
-         </p>
+        <span class="label label-info">
+        <b> Заказчик в любой момент может...</b><hr/>
           <%= form_tag("/contracts/#{@contract.id}/close", :method => "get") do %>
             <%= render 'shared/valid_field' %>
             <%= submit_tag("Закрыть заявку", class: "btn btn-mini") %>
           <% end %>
+        </span>
         </section>
         <section>   
            <p class="muted"  align="justify"> <%= link_to 'Разместите', new_contract_path %> заявку и выбирете лучшее предложение. Регистрация не требуется.</p> 
@@ -61,25 +62,24 @@
          <% end %>
 
         </h3>
-        <ol>
+        <ul class="thumbnails">
            <%= render @offers %>
-        </ol>
+        </ul>
  
      <% end %>
 
    <% else %>
 
      <% if !@offers.nil? %>
-       <h3> Принятое предложениe </h3>
-       <ol>
-          <%= render @offers %>
-       </ol>
-     <% else %>
-        <h3> Нет принятых предложений </h3>
-     <% end %>
+         <h3> Принятое предложениe </h3>
+           <ul class="thumbnails">
+              <%= render @offers %>
+           </ul>
+      <% else %>
+         <h3> Нет принятых предложений </h3>
+      <% end %>
 
    <% end %>
-
 
  </div>
 </div>
