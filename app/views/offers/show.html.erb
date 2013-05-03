@@ -1,4 +1,7 @@
 <% provide(:title, "Принять предложение")%>
+<h1>Согласие</h1> 
+<h2>принятия предложения о исполнении заявки и обмене контактами с исполнителем</h2>
+
 <!-- Carousel -->
 
 <% size_collection = @offer.user.attached_assets.size %>
@@ -31,13 +34,42 @@
          <center><%= image_tag('default_photo.jpg') %></center>      
 <% end%>
 
-<h2>Согласие на принятие предложения о исполнении заявки и обмене контактами с исполнителем.</h2>
        <p> <strong><%= link_to @offer.user.name, @offer.user %> предлагает исполнить вашу заявку за <%= @offer.price %> рублей.</strong> </p>
  <p align="right">    <i> <%= wrap(@offer.adword) %> </i> </p>
+
+<ul>
+  <li>
+    <span class="label label-inverse">
+      <%= @offer.contract.contractor_name %>
+    </span>
+  </li>
+  <li>
+    <span class="label label-info"> 
+      <%= @offer.contract.t_car %>
+    </span>
+  </li>
+  <li>
+   <span class="label label-warning"> 
+     <%= @offer.contract.date_rent %> в <%= @offer.contract.time_rent %>
+   </span>
+  </li>
+  <li>
+    <span class="label label-success">
+     аренда на <%= @offer.contract.lease_time %> часов </span>
+    </span>
+  </li>
+</ul>
+ <blockquote><p> <%= @offer.contract.body_contract %> </p></blockquote>
+
 
 <hr/>
        <p align="justify"> Если Вы согласны введите код активации и нажмите на кнопку "Принять предложение". После этого Вам будут высланы телефоны и email друг друга. </p>
      <%= form_tag("/offers/#{@offer.id}/bang", :method => "get") do %>
-    Код активации <%= text_field_tag(:q, nil, placeholder: '**', class: "input-small") %>
+    <%= render '/shared/valid_field' %>
       <%= submit_tag("Принять предложение", class: "btn btn-small btn-success") %>
      <% end %>
+
+    <% if !current_user.nil? && current_user.admin? %>
+      <%= link_to '[delete]', @offer, method: :delete, data: {confirm: "Delete offer?"} %>
+    <% end %>
+

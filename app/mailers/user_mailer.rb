@@ -18,4 +18,15 @@ class UserMailer < ActionMailer::Base
     @url = "http://taxizi.ru/contracts/#{@contract.id}"
     mail(to: contract.contractor_email, bcc: "vladislav.sychev@gmail.com", subject: "Activation Code TaxiZi")
   end
+
+  def new_offer_email(offer)
+    @offer = offer
+    @url = "http://taxizi.ru/offers/#{offer.id}"
+    mail(to: offer.contract.contractor_email, bcc: "vladislav.sychev@gmail.com", subject: "New offer for your order TAXIZI")
+  end
+
+  def offer_taken_email(offer)
+    @offer = offer
+    mail(to: offer.user.email, cc: offer.contract.contractor_email, bcc: "vladislav.sychev@gmail.com", subject: "Taken offer. TaxaZi. Contacts")
+  end
 end

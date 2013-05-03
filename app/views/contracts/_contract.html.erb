@@ -1,4 +1,3 @@
-
 <li>
   <span class="timestamp"> 
      <% if contract.close_contract == true %>
@@ -6,23 +5,30 @@
          ЗАКРЫТ! |
        </b>
      <% end %>
-     <%= contract.date_rent.to_s(:ru_date) %> |  
-     <%= contract.time_rent %>
-     <%= contract.t_car %> на <%= contract.lease_time %> часа/ов для
-     <%= contract.contractor_name %> 
-  <% if !current_user.nil? && current_user.admin? %>
- <br/> < <%= contract.contractor_email %> >
-  <%= contract.contractor_mphone %> 
-  [
-  <%= link_to "delete", contract, method: :delete, data: { confirm: "You sure?" } %>
-|   <%= link_to "edit", edit_contract_path(contract.id) %>
-   ]
-  <% end %>
-  
-   </span>
-
+     <span class="badge badge-warning">
+       <%= contract.date_rent.to_s(:ru_date) %> 
+       <%= contract.time_rent %>
+     </span> 
+     <span class="badge badge-info">
+       <%= contract.t_car %>
+     </span> 
+     <span class="badge badge-success">
+      на <%= contract.lease_time %> часа/ов
+     </span> 
+     <span class="badge">
+       для <%= contract.contractor_name %>
+     </span> 
+     <% if !current_user.nil? && current_user.admin? %>
+      <br/> 
+       < <%= contract.contractor_email %> >
+       <%= contract.contractor_mphone %> 
+       [ <%= link_to "delete", contract, method: :delete, data: { confirm: "You sure?" } %>
+       |   <%= link_to "edit", edit_contract_path(contract.id) %>
+       ]<br/>
+     <% end %>
+  </span>
   <span class="content">   
-     <%= link_to contract.body_contract, contract %>
+     <%= link_to wrap(contract.body_contract), contract %>
   </span>
  <small>
   Предложений 

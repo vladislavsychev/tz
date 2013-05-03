@@ -3,9 +3,23 @@
     <%= render 'shared/error_messages', object: f.object %>
       <h4>Ваше предложение?</h4>
          <%= f.text_field :price, placeholder: "14000" %>
-         <%= f.text_area :adword, placeholder: "Слова ободрения и рекламы..." %>
+         <%= f.text_area :adword, placeholder: "Условия исполнения если они есть..." %>
          <%= f.hidden_field :contract_id, value: @contract.id %>
 
          <%= f.submit "Предложить", class: "btn btn-primary" %>
+    <hr/>
+      <span class="label label-warning">
+       ВНИМАНИЕ:   до  тех пор пока предложение не <br/>
+       принято заказчиком оно может отозвано.
+      </span>
+     
+      <span class="label label-inverse">
+       Это не сайт бесплатных объявлений. Мы не<br/>
+       оказываем услуги по размещению рекламы.<br/>
+       Будут удаляться предложения с рекламой,<br/>
+       телефонами и адресами исполнителя.<br/> 
+       Спасибо за понимание.
+      </span>
+
    <% end %>
 </div>

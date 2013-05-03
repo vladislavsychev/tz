@@ -1,0 +1,36 @@
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+     <h4> 
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Заказы к исполнению
+      </a>
+     </h4>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+     <div class="accordion-inner">
+        <% @contracts = @contracts_taken %>
+         <ul class="contracts unstyled">
+           <%= render @contracts %>
+         </ul>
+     </div>
+   </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+     <h4><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Открытые заказы с моими предложениями
+      </a>
+     </h4>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+     <div class="accordion-inner">
+       <% @contracts = @contracts_nottaken %>
+        <ul class="contracts unstyled">
+          <%= render @contracts %>
+        </ul>
+     </div>
+   </div>
+  </div>
+</div>
+
+

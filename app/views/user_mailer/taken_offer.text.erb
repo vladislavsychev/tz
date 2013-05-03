@@ -1,0 +1,31 @@
+Приветствую Вас с успешной сделкой.
+
+Заказчик: 
+<%= @offer.contract.contractor_name %>
+< <%= @offer.contract.contractor_email %> > 
+мобильный телефон: <%= @offer.contract.contractor_mphone %>
+
+Исполнитель:
+<%= @offer.user.name %>
+< <%= @offer.user.email %> >
+<%= @offer.user.mphone %>
+ 
+<%= link_to 'Заказ', @offer.contract %> размещенный на сайте http://taxizi.ru ЗАКРЫТ!
+<%= @offer.contract.t_car %>
+<%= @offer.contract.date_rent %>
+<%= @offer.contract.tame_rent %>
+на <%= @offer.contract.lease_time %> часа.часов
+
+<%= @offer.contract.body_contract %>
+      
+Заказчик принял нижеследующее предложение:
+<%= @offer.user.name %> предлагает исполнить ваш заказ за <%= @offer.price %> рублей.
+<%= @offer.adword %>
+
+
+<%= link_to 'Заказ', @offer.contract %>
+
+Не отвечайте на это письмо. Письмо сгенерировано и отослано автоматической 
+службой уведомления клиентов.
+
+Мы рады что вы воспользовались услугами нашего сервиса. Peace. Love.

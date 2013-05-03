@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Приветствую, <%= @offer.contract.contractor_name %>.</h1>
+    <p>
+      Поступило новое предложение для вашего 
+      <%= link_to 'заказа', @offer.contract %> размещенного на сайте http://taxizi.ru :
+    </p>
+    <ul>
+      <li><%= @offer.contract.t_car %> </li>
+      <li><%= @offer.contract.date_rent %> </li>
+      <li>на <%= @offer.contract.lease_time %> часа.часов</li>
+    </ul>
+     <%= @offer.contract.body_contract %>
+    <h3>
+      Предложение
+    </h3>
+    <%= @offer.user.name %> предлагает исполнить ваш заказ за <%= @offer.price %> рублей.
+    <i> <%= @offer.adword %></i>
+    <p>
+      Если Вас заинтересовало это предложение перейдите на сайт
+      <%= @url %> и примите предложение. Также Вы можете посмотреть 
+      на фотографии автомобиля предлагаемые вашему вниманию.
+    </p>
+    <p>
+     ПИН-КОД: <%= @offer.contract.created_at.to_i.to_s.split('').reverse.join[0..3] %>
+    </p>
+    <p>
+      ВНИМАНИЕ: до вашего подтверждения предложение может быть отозвано в любой момент.
+    </p>>
+    <p>
+     <%= link_to 'Ваш заказ', @offer.contract %>
+    </p>   
+    <p>
+      Не отвечайте на это письмо. Письмо сгенерировано и отослано автоматической службой уведомления клиентов.
+    </p>
+</body>
+</html>

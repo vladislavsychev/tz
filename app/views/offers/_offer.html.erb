@@ -23,11 +23,14 @@
 
   <small>
     <% if !current_user.nil? && current_user.admin? %>
-      <%= link_to 'delete', offer, method: :delete, data: {confirm: "Delete offer?"} %>
+      <%= link_to '[delete]', offer, method: :delete, data: {confirm: "Delete offer?"} %>
+      <%= link_to '[полностью]',  offer_path(offer.id) %>
     <% end %>
 
     <% if current_user.nil? && offer.contract.close_contract == false %>
-      <%= link_to 'фотографии большого размера, принять заявку',  offer_path(offer.id) %>      
+      <%= link_to 'фотографии большого размера, принять заявку',  offer_path(offer.id) %> 
+      <% elsif current_user == offer.user && offer.contract.close_contract == false %>
+      <%= link_to( '[отозвать предложение]', offer, method: :delete, data: { confirm: "You sure?" } ) %>     
     <% end %>
 
   </small>

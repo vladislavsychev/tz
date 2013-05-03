@@ -11,10 +11,14 @@ class OffersController < ApplicationController
   def create
 #    store_location
     @contract = Contract.find(params[:offer][:contract_id])
-    if !@contract.close_contract? && current_user.offers.create(params[:offer])
-       flash[:success] = "Your offer put on."
-    else
-       flash[:error] = "Your offer reject."
+    unless @contract.close_contract? 
+      offer = current_user.offers.create(params[:offer])
+       unless offer.id == nil
+        UserMailer.new_offer_email(offer).deliver
+        flash[:success] = "Your offer #{offer.id}, price #{offer.price} put on."
+       else
+        flash[:error] = "Your offer reject."
+       end
     end 
     redirect_to @contract
   end
@@ -34,6 +38,7 @@ class OffersController < ApplicationController
           o_taken = offer_for_bang.toggle!(:taken) 
           c_closed = offer_for_bang.contract.toggle!(:close_contract)
        if o_taken && c_closed
+          UserMailer.offer_taken_email(offer_for_bang).deliver
           flash[:success] = "Bang! Offer taken. Pre order closed."
        else
           flash[:error] = "Wrong taken."
@@ -58,7 +63,7 @@ private
     end
 
     def correct_code
-       redirect_to root_path unless params[:q] == Offer.find(params[:id]).contract.created_at.to_i.to_s.split('').reverse.join[0..5]
+       redirect_to root_path unless params[:q] == Offer.find(params[:id]).contract.created_at.to_i.to_s.split('').reverse.join[0..3]
     end
 
 end

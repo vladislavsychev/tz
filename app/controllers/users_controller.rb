@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
 before_filter :correct_user,   only: [:edit, :update]
-before_filter :admin_user,     only: [:destroy]
+before_filter :admin_user,     only: [:destroy, :index]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -12,21 +12,20 @@ before_filter :admin_user,     only: [:destroy]
    @user = User.find(params[:id])
 
 # contracts with taken offer of user
-   @contracts_id_mytaken = @user.offers.
+   contracts_id_mytaken = @user.offers.
                            where(:taken => true).map(&:contract_id).uniq  
    @contracts_taken = @user.contracts.
-                     where("contract_id IN (?)", @contracts_id_mytake).uniq
-
-# contracts with nottaken offers of user
-   @contracts_id_nottaken = @user.offers.
-                           where(:taken => nil).map(&:contract_id).uniq
-
-   @contracts_nottaken = @user.contracts.
-                     where("contract_id IN (?)", @contracts_id_nottaken).
-                     where(:close_contract => false).
+                     where("contract_id IN (?)", contracts_id_mytaken).
                      where(["date_rent >= ?", Time.now]).uniq
 
-   @contracts = @contracts_nottaken
+# contracts with nottaken offers of user
+   contracts_id_nottaken = @user.offers.
+                           where(:taken => false).map(&:contract_id).uniq
+
+   @contracts_nottaken = @user.contracts.
+                     where("contract_id IN (?)", contracts_id_nottaken).
+                     where(:close_contract => false).
+                     where(["date_rent >= ?", Time.now]).uniq
    
   end
 
@@ -93,6 +92,6 @@ before_filter :admin_user,     only: [:destroy]
     end
 
     def admin_user
-       redirect_to(root_path) unless curent_user.admin?
+       redirect_to(root_path) unless current_user.admin?
     end
 end

@@ -3,10 +3,20 @@ class ContractsController < ApplicationController
 before_filter :correct_code, only: [:valid, :close, :update, :destroy]
 
   def index
-    @contracts = Contract.
+    ind = params[:in]
+    outd = params[:out]
+
+    unless ind.nil? || outd.nil? || ind.empty? || outd.empty? 
+      @contracts = Contract.
+                 where(:active => true, :close_contract => false).
+                 where(:date_rent => ind.to_date.beginning_of_day..outd.to_date.end_of_day).
+                 paginate(page: params[:page])
+    else
+      @contracts = Contract.
                  where(:active => true, :close_contract => false).
                  where(["date_rent >= ?", Time.now]).
                  paginate(page: params[:page])
+    end
   end
 
 
@@ -86,10 +96,10 @@ private
   def correct_code
     @contract = Contract.find(params[:id])
      unless @contract.nil?
-       if (params[:q] == @contract.created_at.to_i.to_s.split('').reverse.join[0..5]) || (!current_user.nil? && current_user.admin?)
+       if (params[:q] == @contract.created_at.to_i.to_s.split('').reverse.join[0..3]) || (!current_user.nil? && current_user.admin?)
          return true
        else
-         flash[:error] = 'Incorrect code activation.'
+         flash[:error] = 'Incorrect PIN-code.'
          return false
        end
      end

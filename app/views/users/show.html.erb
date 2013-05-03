@@ -23,22 +23,6 @@
     </section>
   </aside>
   <div class="span8">
-      <% if @contracts.any? %>
-       <h2> Смотрит на <%= @contract_count = @contracts.count %> 
-         <% @contract_count_lastint = @contract_count.to_s.split('')[-1].to_i %>
-         <% if @contract_count_lastint > 4  or @contract_count_lastint  == 0 %>
-            предзаказов
-         <% elsif @contract_count_lastin == 1 %> 
-            предзаказ
-         <% else %>
-            предзаказа
-         <% end %>
-        </h2>
-
-       <ol>
-          <%= render @contracts %>
-       </ol>
-  <% end%>
-
+    <%= render 'mycontracts' %>
   </div>
 </div>
