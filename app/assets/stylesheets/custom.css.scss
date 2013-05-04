@@ -1,4 +1,4 @@
-@import "bootstrap";
+ @import "bootstrap";
 
 /* universal */
 
@@ -37,6 +37,7 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+  text-shadow: white -1px -1px 2px;
 }
 
 h2 {
@@ -225,10 +226,7 @@ input {
   color: $grayLight;
   font-size: 0.9em;
 }
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
+
 aside {
   textarea {
     height: 100px;
@@ -240,4 +238,18 @@ aside {
 background-color: #ffc; /* цвет фона желтый */
 }
 
+/* form new contract */
+
+/* first page */
+
+.hero-unit {
+ background-image: url(white-limo-men.png);
+ background-repeat: no-repeat;
+ background-position: 330px 85px;
+}
+/* labels */
+.roll-label {
+ border-radius: 7px 7px 7px 7px;
+ margin-top: 64px;
+}
 

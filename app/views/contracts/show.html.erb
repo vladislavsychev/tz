@@ -1,37 +1,36 @@
 <% provide(:title, "#{@contract.id}") %>
 
 <div class="row">
-   <aside class="span4">
-
-
-<% unless @contract.active? %>
-   <section style="background-color: #fda">  
-    <section style="margin: 10px">
-     <center>
-      <%= form_tag("/contracts/#{@contract.id}/valid", :method => "get") do %>
-       <%= render 'shared/valid_field' %>
-        <%= submit_tag("Подтвердить заказ", class: "btn btn-success") %>
-     </center>
-      <p align="justify">
-       <b>
-         Признавая желание заказчика избежать процедуры регистрации на сайте,  
-         мы используем ПИН-КОД для распознавания. 
-         Процедура подтверждения заказа позволяет избежать спама и ложных запросов. 
+  <aside class="span4">
+   <div style="margin-top: 50px">
+    <% unless @contract.active? %>
+     <section class="roll-label" style="background-color: #fda;">  
+      <section style="margin: 10px;">
+        <center>
+          <%= form_tag("/contracts/#{@contract.id}/valid", :method => "get") do %>
+           <%= render 'shared/valid_field' %>
+            <%= submit_tag("Подтвердить заказ", class: "btn btn-success") %>
+          <% end %>
+        </center>
+       <p align="justify">
+        <b>
+          Признавая желание заказчика избежать процедуры регистрации на сайте,  
+          мы используем ПИН-КОД для распознавания. 
+          Процедура подтверждения заказа позволяет избежать спама и ложных запросов. 
+          <br/>
+          ВНИМАНИЕ: При отсутствии подтверждения заказ удаляется в течении 24 часов после его формирования.
+          До тех пор пока заказ не подтвержден, он не доступен для поиска и его не видно на 
+          <%= link_to 'странице заказов.', contracts_path %>
+        </b>
         <br/>
-         ВНИМАНИЕ: При отсутствии подтверждения заказ удаляется в течении 24 часов после его формирования.
-         До тех пор пока заказ не подтвержден, он не доступен для поиска и его не видно на 
-         <%= link_to 'странице заказов.', contracts_path %>
-       </b>
-       <br/>
-       <small>
+        <small>
          Если вы забыли пин-код перейдите на страницу восстановления пин-кода. Если вы не получили пин-код обратитесь в службу обслуживания клиентов. 
-       </small>
-      </p>
-     </section>
-   </section>
+        </small>
+       </p>
+      </section>
+     </section>   
     <% end %>
-<% end %>
-<% if  @contract.active? && !@contract.close_contract? %>
+    <% if  @contract.active? && !@contract.close_contract? %>
       <% if signed_in? %>
         <section>   
           <%= render 'shared/offer_form' %>
@@ -46,7 +45,7 @@
           <% end %>
         </span>
         </section>
-        <section style="background-color: #fef4ba">
+        <section class="roll-label" style="background-color: #fef4ba;">
           <section style="margin: 10px">   
            <p class="muted"  align="justify"> <%= link_to 'Разместите', new_contract_path %> заказ и возьмите лучшее предложение. Регистрация не требуется.</p> 
            <p class="muted"  align="justify">Есть предложение? Вы должны <%= link_to "войти", signin_path %> на сайт под своим логином и паролем.</p>
@@ -54,17 +53,17 @@
          </section>
         </section>
       <% end %>
-<% end %>
-<% if @contract.close_contract? %>
-  <section style="background-color: #fee">
-   <section style="margin: 10px">
-    <h4>Заказ закрыт.</h4>
-      <p class="muted">После закрытия заказа новые предложения не принимаются.</p>
-   </section>
-  </section>
-<% end %>
- 
- </aside>
+     <% end %>
+     <% if @contract.close_contract? %>
+       <section class="roll-label" style="background-color: #fee;">
+         <section style="margin: 10px">
+          <h4>Заказ закрыт.</h4>
+            <p class="muted">После закрытия заказа новые предложения не принимаются.</p>
+        </section>
+       </section>
+     <% end %>
+   </div>
+  </aside>
 
  <div class="span8">
   <%= render 'contract_preview_big_show' %>

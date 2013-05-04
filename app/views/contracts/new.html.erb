@@ -1,12 +1,22 @@
-<% provide(:title, "Новая заявка") %>
-<h2>Заполните форму</h2>
+<% provide(:title, "Новый заказ") %>
 <div class="row">
-  <div class="span10 offset1">
-    <%= form_for(@contract) do |f| %>
-     <%= render 'shared/error_messages', object: f.object %>
-      <%= render 'contract_field', f: f %>
+  <div class="span2 roll-label" style="background-color: #efecea">
+    <div style="margin: 6px">
+   <p class="muted">
+    <small> 
+     Вместе с нами лучшии машины стали доступнее. Разместите свою заявку и ждите предложений от владельцев лимузинов и минивэнов. Никаких звонков: получайте предложения через почту или SMS. Это реально быстрый и удобный способ получить то что Вам надо. Выбирите реально лучшие автомобили по удивительно доступным ценам.
+    </small>
+   </p>
+  </div> 
+ </div>
 
-    <% end %>
+    <div class="span9">
+     <h1>Выбери лучшее</h1>
+      <h2>C ТАКСИZИ лимузины стали доступнее</h2>
+       <%= form_for(@contract) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+         <%= render 'contract_field', f: f %>
+      <% end %>
+    </div>
+ </div>
 
-  </div>
-</div>

@@ -14,6 +14,4 @@
 //= require jquery_ujs
 //= require jquery-ui.js
 //= require bootstrap
-//= require bootstrap-carousel.js
-//= require bootstrap-collapse.js
 //= require_tree .

@@ -38,16 +38,15 @@ before_filter :correct_code, only: [:valid, :close, :update, :destroy]
 
   def show
     @contract = Contract.find(params[:id])
-    unless @contract.close_contract?
-       @offers = @contract.offers.all
-
+      unless @contract.close_contract?
+         @offers = @contract.offers.all
        if signed_in?
          @offer = @current_user.offers.build(:contract_id => @contract.id)
        end
-
-    else
+      else
        @offers = @contract.offers.where(:taken => true)
-    end
+      end
+
   end
 
   def edit
@@ -55,13 +54,17 @@ before_filter :correct_code, only: [:valid, :close, :update, :destroy]
   end
 
   def update
+   unless @contract.offers.any?
     if correct_code && @contract.update_attributes(params[:contract])
       flash[:success] = "Pre order updated"
       redirect_to @contract
     else
       render 'edit'
     end
-
+   else
+     flash[:error] = "Prohibet edit the contract after first offer"
+     redirect_to @contract
+   end
   end
 
   def valid
@@ -102,6 +105,8 @@ private
          flash[:error] = 'Incorrect PIN-code.'
          return false
        end
+     else
+       redirect_to root_path
      end
   end
 end

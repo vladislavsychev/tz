@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Приветствую, <%= @user.name %></h1>
+    <p>
+      На сайте taxizi.ru была активирована услуга восстановления пароля для пользователя с вашим email.
+    </p>
+      Ваш новый пароль: <%= @user[:password] %>.
+    </p>
+    <p>Спасибо и удачи!</p>
+Не отвечайте на это письмо оно было выслано автоматизированной службой сервиса.
+  </body>
+</html>

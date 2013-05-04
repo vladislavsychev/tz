@@ -53,7 +53,6 @@ before_filter :admin_user,     only: [:destroy, :index]
 
   def update
     @user = User.find(params[:id])
-    
     if @user.update_attributes(params[:user])
     UserMailer.update_email(@user).deliver
       flash[:success] = "Profile updated"
@@ -78,9 +77,25 @@ before_filter :admin_user,     only: [:destroy, :index]
          asset.asset.clear
          asset.destroy
          user.save(:validate => false)
-         redirect_to edit_user_path(current_user)
+         cookies.permanent[:remember_token] = user.remember_token
+         @current_user = user
+         redirect_to edit_user_path(user)
       else
          redirect_to root_path
+      end
+  end
+  
+  def newpass
+      user = User.find_by_email(params[:email])
+      unless user.nil?
+        newpass = ((0..9).to_a + ('A'..'X').to_a).shuffle.join[0..7]
+        user.update_attributes(:password => newpass, :password_confirmation => newpass)
+        user[:password] = newpass
+        UserMailer.newpass_email(user).deliver
+        respond_to do |format|
+          format.html { redirect_to @user }
+          format.js
+        end
       end
   end
 

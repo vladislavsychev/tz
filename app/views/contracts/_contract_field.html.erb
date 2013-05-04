@@ -1,12 +1,9 @@
-<table cellpadding="10" cellspacing="2" align="left">
+<div>
+<table bgcolor="#E9E9A4" cellpadding="8px" class="contract">
   <tr> 
-   <td rowspan="3"> <h5>Чего изволите?</h5> </td>
+   <td rowspan="2"> <h5>Чего изволите?</h5> </td>
     <td> <%= f.radio_button :t_car, "limousin", checked: true %> </td>
     <td> л и м у з и н </td>
-  </tr>
-  <tr>
-    <td><%= f.radio_button(:t_car, 'retro car') %></td>
-    <td> ретро автомобиль </td>
   </tr>
   <tr>
     <td><%= f.radio_button(:t_car, 'VIP minivan') %></td>
@@ -70,7 +67,4 @@
     <td><%= f.submit("Отправить заявку", class: "btn btn-success") %></td>
   </tr> 
 </table>
-
-
-
-
+</div>

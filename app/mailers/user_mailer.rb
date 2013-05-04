@@ -29,4 +29,10 @@ class UserMailer < ActionMailer::Base
     @offer = offer
     mail(to: offer.user.email, cc: offer.contract.contractor_email, bcc: "vladislav.sychev@gmail.com", subject: "Taken offer. TaxaZi. Contacts")
   end
+
+  def newpass_email(user)
+    @user = user
+    mail(to: @user.email, bcc: "vladislav.sychev@gmail.com", subject: "New password. Tax iZi.")
+  end
+
 end

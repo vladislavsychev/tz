@@ -20,7 +20,7 @@ Tz::Application.routes.draw do
   match '/contracts/:id/valid', to: 'contracts#valid'
   match '/contracts/:id/close', to: 'contracts#close'
   match '/offers/:id/bang', to: 'offers#bang', as: 'bang'
-
+  match '/newpass', to: 'users#newpass'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

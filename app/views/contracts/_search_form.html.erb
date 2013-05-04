@@ -1,12 +1,11 @@
-<div style="margin-top: 64px; background-color: #fd9">
+<div class="roll-label" style="background-color: #fd9">
   <div style="margin: 9px">
-    <h5 style="font-color: #fff">tax easy! try</h5>
    <%= form_tag("/contracts", method: "get") do %>
      <%= label_tag(:in, "Искать заказы с:") %>
        <%= text_field_tag(:in, nil, placeholder: "22.06.2013", class: "datepicker") %>
          <%= label_tag(:out, "по:") %>
            <%= text_field_tag(:out, nil, placeholder: "01.09.2013", class: "datepicker") %>
-             <%= submit_tag("Выбрать") %> 
+             <%= submit_tag("Выбрать", class: "btn btn-small btn-success") %> 
    <% end %>
    <small>
      <b>

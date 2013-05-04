@@ -1,11 +1,12 @@
 <% provide(:title, "Редактировать заявку") %>
 <div class="row">
-<h2>Редактировать.</h2>
-<h3>    <%= render 'shared/valid_field'%> </h3>
-  <div class="span10 offset1">
-    <%= form_for(@contract) do |f| %>
-     <%= render 'shared/error_messages', object: f.object %>
-      <%= render 'contract_field', f: f %>
+ <h1>Изменить заказ</h2>
+  <h3>редактировать заказ вы можете только до первого предложения</h3>
+  <center>    <%= render 'shared/valid_field'%> </center>
+    <div class="span10 offset1">
+     <%= form_for(@contract) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+       <%= render 'contract_field', f: f %>
     <% end %>
 
   </div>
