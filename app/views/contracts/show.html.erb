@@ -4,7 +4,7 @@
   <aside class="span4">
    <div style="margin-top: 50px">
     <% unless @contract.active? %>
-     <section class="roll-label" style="background-color: #fda;">  
+     <section class="roll-label orange-paper">  
       <section style="margin: 10px;">
         <center>
           <%= form_tag("/contracts/#{@contract.id}/valid", :method => "get") do %>
@@ -45,7 +45,7 @@
           <% end %>
         </span>
         </section>
-        <section class="roll-label" style="background-color: #fef4ba;">
+        <section class="roll-label white-vatmann">
           <section style="margin: 10px">   
            <p class="muted"  align="justify"> <%= link_to 'Разместите', new_contract_path %> заказ и возьмите лучшее предложение. Регистрация не требуется.</p> 
            <p class="muted"  align="justify">Есть предложение? Вы должны <%= link_to "войти", signin_path %> на сайт под своим логином и паролем.</p>
@@ -55,7 +55,7 @@
       <% end %>
      <% end %>
      <% if @contract.close_contract? %>
-       <section class="roll-label" style="background-color: #fee;">
+       <section class="roll-label rose-paper">
          <section style="margin: 10px">
           <h4>Заказ закрыт.</h4>
             <p class="muted">После закрытия заказа новые предложения не принимаются.</p>

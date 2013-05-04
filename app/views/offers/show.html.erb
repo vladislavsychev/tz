@@ -1,6 +1,12 @@
 <% provide(:title, "Принять предложение")%>
-<h1>Согласие</h1> 
-<h2>принятия предложения о исполнении заявки и обмене контактами с исполнителем</h2>
+<div class="container">
+  <div class="row">
+  <aside>
+  </aside>
+    <div class="span8 blue-paper">
+      <div style="margin: 0px 20px 0px 20px">
+        <h1>Согласие</h1> 
+          <h2>принятия предложения о исполнении заказа и обмене контактами с исполнителем</h2>
 
 <!-- Carousel -->
 
@@ -61,4 +67,6 @@
     <% if !current_user.nil? && current_user.admin? %>
       <%= link_to '[delete]', @offer, method: :delete, data: {confirm: "Delete offer?"} %>
     <% end %>
-
+   </div>
+  </div>
+</div>

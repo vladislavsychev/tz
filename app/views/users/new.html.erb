@@ -1,14 +1,14 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up here.</h1>
-<h3>All the wolrd hundreds consumers use the <%= link_to 'TaxiZi', about_path %> everyday. Now in Russia.</h3>
-
-<h2>Можете заполнить только желтые поля.</h2>
+<h1>Регистрация</h1>
+<h3>Можете заполнить только желтые поля.</h3>
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span6 offset3 white-vatmann">
+   <div style="margin: 20px">
     <%= form_for @user, :html => { :multipart => true } do |f| %>
      <%= render 'shared/error_messages', object: f.object %>
       <%= render 'fields', f: f %>
        <%= f.submit "Create my account", class: "btn btn-large btn-success" %>
     <% end %>
+   </div>
   </div>
 </div>

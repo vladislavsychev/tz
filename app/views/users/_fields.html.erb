@@ -1,17 +1,17 @@
 
-<%= f.label :name %>
-<%= f.text_field :name, placeholder: 'min. 4 letters and digits' %>
+<%= f.label :name, "Ваше имя" %>
+<%= f.text_field :name, placeholder: 'Не меньше 4 букв или цифр' %>
 
 <%= f.label :email %>
 <%= f.text_field :email %>
 
-<%= f.label :mphone, "Mobile phone" %>
-<%= f.text_field :mphone, placeholder: 'only digits please' %>
+<%= f.label :mphone, "Мобильный телефон" %>
+<%= f.text_field :mphone, placeholder: 'Только цифры. Например: 9635557788' %>
 
-<%= f.label :password %>
+<%= f.label :password, "Пароль" %>
 <%= f.password_field :password %>
 
-<%= f.label :password_confirmation, "Confirm Password" %>
-<%= f.password_field :password_confirmation %>
-<h5>Добавить фото автомобиля? Просто.</h5> 
+<%= f.label :password_confirmation, "Подтверждение пароля" %>
+<%= f.password_field :password_confirmation, placeholder: "Можно не вводить, но стоит ли рисковать?" %>
+<h5>Добавить фотографии автомобиля? Просто.</h5> 
 <%= file_field_tag('user_attached_assets_asset', multiple: true, size: "15", name: "user[attached_assets_attributes][][asset]", placeholder: "Выбрать фотографии", class: "btn btn-small") %>
