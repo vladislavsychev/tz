@@ -1,11 +1,11 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "TaxiZi", root_path, id: "logo" %>
+      <%= link_to image_tag('taxizi.png'), root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "Главная", root_path %></li>
-          <li><%= link_to 'Разместить заказ', new_contract_path %></li> 
+          <li><%= link_to 'Заказать', new_contract_path %></li> 
           <li><%= link_to 'Открытые заказы', contracts_path %></li>
           <li><%= link_to "Помощь", help_path %></li>
           <% if signed_in? %>
@@ -24,7 +24,8 @@
               </ul>
             </li>
           <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
+            <li><%= link_to "Вход", signin_path %></li>
+            <li><%= link_to "Регистрация", signup_path, class: "warning" %></li>
           <% end %>
         </ul>
       </nav>

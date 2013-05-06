@@ -1,3 +1,37 @@
-<% provide(:title, 'Contact us 24/7/365') %>
-<h1>Contact</h1>
-<p>Contact Us 14/88 by email, skype, phone, facebook, twitter and russian vk.com.</p>
+<% provide(:title, 'Контакты Такси Zi') %>
+<div class="row">
+  <div class="span6">
+    <h1>Контакты</h1>
+      <p> 
+        Если Вам требуется лимузин или вип минибас, если у вас есть вопрос по условиям и ценам - разместите заказ:
+          <%= link_to 'Разместить заказ на сайте', new_contract_path, class: "btn btn-success btn-large" %>
+       </p>
+       <hr/>
+         <h4>Поддержка по телефону</h4>
+           <p>Звоните с 9:00 до 21:00 по телефону +79264001913</p>
+      <hr/>
+      <h4>Facebook</h4>
+        <p>Mr. Taxi Zi</p>
+      <hr/>
+      <h4>Twitter</h4>
+        <p>twitter.com/taxizi</p>
+      <hr/>
+      <h4>Вконтакте</h4>
+        <p>vk.com/taxizi</p>
+      <hr/>
+       <h4>Почта</h4>
+         <p>121099 Москва, Смоленская ул. 10 - 111</p>
+  </div>
+  <div class="span5 thumbnail rose-paper" style="margin: 80px 0px 0px 62px">
+    <h4>
+      Если у вас есть вопрос на который вы хотите получить письменный ответ напишите нам.
+    </h4>
+    <%= form_tag('/posts') do %>
+      <%= text_field_tag(:name, nil, placeholder: 'Ваше Имя') %>
+        <%= email_field_tag(:email, nil, placeholder: 'Email') %>
+          <%= phone_field_tag(:phone, nil, placeholder: 'Телефон') %>
+            <%= text_area_tag(:content, nil, placeholder: 'Текст письма') %>
+     <%= submit_tag 'Отправить письмо' %>
+    <% end %>
+  </div>
+</div>

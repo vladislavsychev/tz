@@ -35,4 +35,9 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, bcc: "vladislav.sychev@gmail.com", subject: "New password. Tax iZi.")
   end
 
+  def posts_email(user)
+    @user = user
+    mail(to: "taxiziru@yandex.ru", subject: "Post from Contact page")
+  end
+
 end

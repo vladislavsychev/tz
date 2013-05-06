@@ -4,10 +4,9 @@
   <aside class="span4">
    <div style="margin-top: 50px">
     <% unless @contract.active? %>
-     <section class="roll-label orange-paper">  
-      <section style="margin: 10px;">
+     <section class="left-label thumbnail rose-paper"><hr/>
         <center>
-          <%= form_tag("/contracts/#{@contract.id}/valid", :method => "get") do %>
+          <%= form_tag("/contracts/#{@contract.id}/valid") do %>
            <%= render 'shared/valid_field' %>
             <%= submit_tag("Подтвердить заказ", class: "btn btn-success") %>
           <% end %>
@@ -27,7 +26,6 @@
          Если вы забыли пин-код перейдите на страницу восстановления пин-кода. Если вы не получили пин-код обратитесь в службу обслуживания клиентов. 
         </small>
        </p>
-      </section>
      </section>   
     <% end %>
     <% if  @contract.active? && !@contract.close_contract? %>
@@ -45,21 +43,17 @@
           <% end %>
         </span>
         </section>
-        <section class="roll-label white-vatmann">
-          <section style="margin: 10px">   
+        <section class="thumbnail white-vatmann">
            <p class="muted"  align="justify"> <%= link_to 'Разместите', new_contract_path %> заказ и возьмите лучшее предложение. Регистрация не требуется.</p> 
            <p class="muted"  align="justify">Есть предложение? Вы должны <%= link_to "войти", signin_path %> на сайт под своим логином и паролем.</p>
            <p class="muted"  align="justify"> Если вы еще не зарегистрировались сделайте это сейчас. <%= link_to 'Регистрация.', signup_path %> </p>
-         </section>
         </section>
       <% end %>
      <% end %>
      <% if @contract.close_contract? %>
-       <section class="roll-label rose-paper">
-         <section style="margin: 10px">
+       <section class="left-label thumbnail rose-paper">
           <h4>Заказ закрыт.</h4>
             <p class="muted">После закрытия заказа новые предложения не принимаются.</p>
-        </section>
        </section>
      <% end %>
    </div>

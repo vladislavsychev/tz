@@ -1,11 +1,40 @@
-<div class="center hero-unit">
-  <h1>Welcome to the TaxiZi</h1>
-    <h2>Use pre order and get best offer.</h2>
-      <h3>Limo, vip-class sedans, CEO-vans and retro cars.</h3>
-        <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-success" %>
+<div class="hero-unit">
+<!--  <h1>Лимузины и випбасы</h1> -->
+<!--    <h2>Разместите заказ и получите лучшее.</h2> -->
+   <div style="margin-top: -50px; width: 342px; height: 94px; font-size: 80px">
+     <%= image_tag 'taxizi_logo_chrome_grey.jpg', alt: 'Такси Zi' %>
+   </div>
+      <h6 style="font-size: 1.5em; color: #999; margin-left: 20px; letter-spacing: -1px">Выберите лучшее предложение</h6>
+
+        <%= link_to "Разместите заказ", new_contract_path, class: "btn btn-large btn-success", style: "margin-left: 90px; margin-bottom: 21px" %>
 </div>
 <div class="center">
   <%= render 'tumb' %>
 </div>
+<div class="row"  style="text-align: justify">
+  <div class="span6">
+    <%= render 'carousel' %>
+  </div>
+  <div class="span6 white-vatmann">
+    <h2>Как работает Такси Zi?</h2>
+     <h3>.</h3>
+   <ul>
+     <li>
+     Уникальный онлайн сервис по аренде лимузинов, випбасов, минивэнов представительского класса и ретроавтомобилей. 
+     </li>
+     <li> Просто <%= link_to 'разместите заказ', new_contract_path %> и десятки владельцев смогут сделать Вам свои предложения.
+    </li>
+    <li>
+    Новый <%= link_to 'источник заказов', contracts_path %> для водителей и компаний. 
+    <li>
+      <%= link_to 'Зарегистрируйтесь', signup_path %> на сайте, ищите заказы, делайте предложения и выполняйте заказы.
+    </li>
+    <li>
+       Улучшайте свой рейтинг и получайте еще больше заказов.
+    </li>
+   </ul>
+  </div>
+</div>
+
 <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 

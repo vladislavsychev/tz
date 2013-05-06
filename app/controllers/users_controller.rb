@@ -99,6 +99,17 @@ before_filter :admin_user,     only: [:destroy, :index]
       end
   end
 
+  def posts
+    if !params[:email].empty? && !params[:name] && !params[:phone] && !params[:content] 
+     asqer[:email] = params[:email]
+     asqer[:name] = params[:name]
+     asqer[:phone] = params[:phone]
+     asqer[:content] = params[:content]
+     UserMailer.posts_email(asqer).deliver
+    end
+     redirect root_path
+  end
+
   private
 
     def correct_user

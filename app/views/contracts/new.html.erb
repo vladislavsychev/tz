@@ -1,7 +1,6 @@
 <% provide(:title, "Новый заказ") %>
 <div class="row">
-  <div class="span2 roll-label white-vatmann">
-    <div style="margin: 6px"> 
+  <div class="span2 left-label white-vatmann thumbnail">
      <small>
       <ul>
        <li>
@@ -14,15 +13,14 @@
          Никаких звонков: получайте предложения через почту или SMS. Это реально быстро и удобно.
        </li>
        <li> 
-         Выбирите реально лучшие автомобили по удивительно доступным ценам.
+         Выбирете реально лучшие автомобили по удивительно доступным ценам.
        </li>
      </ul>
-   </small>
-  </div> 
+   </small> 
  </div>
     <h1>Выбери лучшее</h1>
-    <div class="span9 rose-paper" style="margin-top: -18px">
-      <h2>ТАКСИZИ. Лимузины стали доступнее.</h2>
+    <div class="span9 thumbnail" style="margin-top: -18px;">
+      <h2>Такси Zi. Лимузины стали доступнее.</h2>
        <%= form_for(@contract) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
          <%= render 'contract_field', f: f %>

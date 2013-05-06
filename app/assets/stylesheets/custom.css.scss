@@ -46,7 +46,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #666;
+  color: #777;
 }
 
 h3 {
@@ -160,11 +160,6 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -243,32 +238,38 @@ background-color: #ffc; /* цвет фона желтый */
 /* first page */
 
 .hero-unit {
- background-image: url(white-limo-men.png);
+ background-image: url(white-limo-men.jpg);
  background-repeat: no-repeat;
- background-position: 330px 85px;
+ background-position: 330px 10px;
 }
 /* labels */
-.roll-label {
- border-radius: 7px 7px 7px 7px;
- margin-top: 64px;
+.left-label {
+ margin-top: 64px; 
 }
 
 .blue-paper {
- background-color: #efefff;
- border-radius: 7px 7px 7px 7px;
+ background-color: #efffff;
+ text-align: justify;
+ border-radius: 6px 6px 6px 6px;
 }
 
 .rose-paper {
  background-color: #ffefef ;
- border-radius: 7px 7px 7px 7px;
+ text-align: justify;
+ border-radius: 6px 6px 6px 6px; 
+/* border: 1px solid #998989; */
 }
 
 .orange-paper {
  background-color: #feecc9;
- border-radius: 7px 7px 7px 7px;
+ text-align: justify;
+ border-radius: 6px 6px 6px 6px;
+/* border: 1px solid #976776; */
 }
 
 .white-vatmann {
  background-image: url(white_vatman.jpeg);
- border-radius: 7px 7px 7px 7px;
+ text-align: justify; 
+ border-radius: 6px 6px 6px 6px;
+/* border: 1px solid #777; */
 }

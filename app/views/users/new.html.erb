@@ -7,7 +7,7 @@
     <%= form_for @user, :html => { :multipart => true } do |f| %>
      <%= render 'shared/error_messages', object: f.object %>
       <%= render 'fields', f: f %>
-       <%= f.submit "Create my account", class: "btn btn-large btn-success" %>
+       <%= f.submit "Зарегистрироваться", class: "btn btn-warning" %>
     <% end %>
    </div>
   </div>

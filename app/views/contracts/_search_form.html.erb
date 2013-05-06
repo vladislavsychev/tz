@@ -1,5 +1,4 @@
-<div class="roll-label" style="background-color: #fd9">
-  <div style="margin: 9px">
+<div class="left-label thumbnail orange-paper">
    <%= form_tag("/contracts", method: "get") do %>
      <%= label_tag(:in, "Искать заказы с:") %>
        <%= text_field_tag(:in, nil, placeholder: "22.06.2013", class: "datepicker") %>
@@ -12,5 +11,5 @@
       <%= link_to 'Регистрируйтесь', signup_path %> и выбирайте самые интересные заказы. Невероятно удобно и выгодно.
      </b>
    </small>
-  </div>
 </div>
+

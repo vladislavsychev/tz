@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+ from: <%= @user[:name] | @user[:email] | @user[:phone] %>
+  <p>
+    <%= @user[:content] %>
+  </p>
+ 
+  </body>
+</html>
