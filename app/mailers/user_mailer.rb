@@ -40,4 +40,10 @@ class UserMailer < ActionMailer::Base
     mail(to: "taxiziru@yandex.ru", subject: "Post from Contact page")
   end
 
+  def infoletter_email(contract)
+    @contract.contract
+    user = User.select(:email).all
+    mail(to: user, subject: 'new order Taxi Zi')
+  end
+
 end

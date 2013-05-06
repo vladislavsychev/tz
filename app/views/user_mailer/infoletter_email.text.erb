@@ -1,0 +1,13 @@
+На сайте Такси Zi сформирован и подтвержден новый заказ:
+
+Дата: <%= @contract.date_rent %>
+Во сколько: <%= @contract.tame_rent %>
+Время аренды: <%= @contract.lease_time %>
+Тип машины: <%= @contract.t_car %>
+<%= wrap(@contract.body_contract) %>
+
+Ссылка: <% link to '', contract_path(@contract) %>
+
+НЕ ОТВЕЧАЙТЕ НА ЭТО ПИСЬМО. 
+ОНО СФОРМИРОВАНО АВТОМАТИЗИРОВАННО СЛУЖБОЙ
+УВЕДОМЛЕНИЯ КЛИЕНТОВ.

@@ -71,6 +71,7 @@ before_filter :correct_code, only: [:valid, :close, :update, :destroy]
     if correct_code
       @contract.toggle!(:active)
       flash[:success] = "Now the pre order is active."
+      UserMailer.infoletter_email(@contract)
     end
       redirect_to @contract || root_path
   end

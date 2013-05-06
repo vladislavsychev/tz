@@ -41,6 +41,7 @@ before_filter :admin_user,     only: [:destroy, :index]
         # Tell the UserMailer to send a welcome Email after save
         UserMailer.welcome_email(@user).deliver
       flash[:success] = "Welcome to the TaxiZi! Good luck and best deal."
+      sign_in @user
       redirect_to @user
     else
       render 'new'
