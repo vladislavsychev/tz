@@ -10,11 +10,9 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
+//= require jquery-1.9.1
 //= require jquery_ujs
-//= require jquery-ui.js
-// require jquery-ui-1.8.17.custom.min.js
-// require jquery.ui.datepicker.js
+//= require jquery-ui-1.10.3.custom.min
 //= require jquery.ui.datepicker-ru.js
 //= require bootstrap
 //= require_tree .
