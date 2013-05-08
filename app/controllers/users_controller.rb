@@ -87,14 +87,14 @@ before_filter :admin_user,     only: [:destroy, :index]
   end
   
   def newpass
-      user = User.find_by_email(params[:email])
+      user = User.find_by_email(params[:user][:email])
       unless user.nil?
         newpass = ((0..9).to_a + ('A'..'X').to_a).shuffle.join[0..7]
         user.update_attributes(:password => newpass, :password_confirmation => newpass)
         user[:password] = newpass
         UserMailer.newpass_email(user).deliver
         respond_to do |format|
-          format.html { redirect_to @user }
+          format.html { redirect_to signin_path }
           format.js
         end
       end

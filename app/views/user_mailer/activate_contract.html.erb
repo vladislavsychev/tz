@@ -12,7 +12,7 @@
       <%= @contract.body_contract %>
     </p>
     <p>
-      Если это были Вы, пожалуйста перейдите на сайт по адресу <%= @url %> и активируйте заказ.
+      Если это были Вы, пожалуйста перейдите на сайт по адресу http://taxizi.ru/contracts/<%= @contract.id %> и активируйте заказ.
     </p>
     <p>
 ПИН-КОД: <%= @contract.created_at.to_i.to_s.split('').reverse.join[0..3] %>

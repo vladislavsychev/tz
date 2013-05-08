@@ -1,13 +1,13 @@
 Здравствуйте <%= @contract.contractor_name %>.
     
 На сайте taxizi.ru был оформлен заказ на аренду
-      <%= @contract.t_car %> /
-      <%= @contract.date_rent %> / 
+      <%= @contract.t_car %> 
+      <%= @contract.date_rent %>  
       <%= @contract.body_contract %>
-Время аренды: <%= @contract.lease_time %> часа/часов<
+Время аренды: <%= @contract.lease_time %> часа/часов
 
 Если это были вы пожалйста перейдите на сайт по адресу
-<%= @url %> и активируйте предзаказ.
+http://taxizi.ru/contracts/<%= @contract.id %> и активируйте предзаказ.
 
 ПИН-КОД: 
 <%= @contract.created_at.to_i.to_s.split('').reverse.join[0..3] %>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h2>
+      Приветствую Вас с успешной сделкой.
+    </h2> 
+    <ul>
+      <li>Заказчик:</li> 
+      <li> <%= @offer.contract.contractor_name %> </li>
+      <li> < <%= @offer.contract.contractor_email %> > </li>
+      <li>мобильный телефон: <%= @offer.contract.contractor_mphone %> </li>
+    </ul>
+    <ul>
+      <li>Исполнитель</li>
+      <li> <%= @offer.user.name %> </li>
+      <li>< <%= @offer.user.email %> ></li>
+      <li>мобильный телефон: <%= @offer.user.mphone %></li>
+    </ul>
+    <p> 
+      Заказ http://taxizi.ru/contracts/<%= @offer.contract.id %> размещенный на сайте http://taxizi.ru ЗАКРЫТ!
+    </p>
+    <ul>
+      <li><%= @offer.contract.t_car %> </li>
+      <li><%= @offer.contract.date_rent %> </li>
+      <li><%= @offer.contract.time_rent %></li>
+      <li>на <%= @offer.contract.lease_time %> часа.часов</li>
+    </ul>
+     <%= @offer.contract.body_contract %>
+      
+    <p> Заказчик принял следующее предложение:<br/>
+    <%= @offer.user.name %> предлагает исполнить ваш заказ за <%= @offer.price %> рублей.
+    <i> <%= @offer.adword %></i>
+    </p>  
+    <p>
+      Не отвечайте на это письмо. Письмо сгенерировано и отослано автоматической службой уведомления клиентов.
+    </p>
+    <strong>Мы рады что вы воспользовались услугами нашего сервиса. Peace. Love.</strong>>
+</body>
+</html>
