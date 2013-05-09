@@ -13,10 +13,12 @@
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
 #  remember_token  :string(255)
+#  limo            :boolean          default(FALSE)
+#  van             :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :mphone, :name, :raiting, :password, :password_confirmation, :attached_assets_attributes 
+  attr_accessible :email, :mphone, :name, :raiting, :password, :password_confirmation, :attached_assets_attributes, :limo, :van 
     
   has_secure_password
 

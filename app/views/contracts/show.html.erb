@@ -2,7 +2,7 @@
 
 <div class="row">
   <aside class="span4">
-   <div style="margin-top: 50px">
+   <div>
     <% unless @contract.active? %>
      <section class="left-label thumbnail rose-paper"><hr/>
         <center>
@@ -61,7 +61,7 @@
 
  <div class="span8">
   <%= render 'contract_preview_big_show' %>
-
+ <div class="span7">
   <% if !@contract.close_contract? %>
 
      <% if !@offers.nil? %>
@@ -96,7 +96,7 @@
       <% end %>
 
    <% end %>
-
+  </div>
  </div>
 </div>
 

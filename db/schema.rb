@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130501161810) do
+ActiveRecord::Schema.define(:version => 20130509070219) do
 
   create_table "attached_assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -67,10 +67,12 @@ ActiveRecord::Schema.define(:version => 20130501161810) do
     t.integer  "raiting"
     t.boolean  "admin"
     t.boolean  "moderator"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "password_digest"
     t.string   "remember_token"
+    t.boolean  "limo",            :default => false
+    t.boolean  "van",             :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

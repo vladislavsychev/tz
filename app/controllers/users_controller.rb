@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
-before_filter :correct_user,   only: [:edit, :update]
+before_filter :correct_user,   only: [:show, :edit, :update]
 before_filter :admin_user,     only: [:destroy, :index]
 
   def index
@@ -53,12 +53,13 @@ before_filter :admin_user,     only: [:destroy, :index]
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-    UserMailer.update_email(@user).deliver
+    user = User.find(params[:id])
+    if user.update_attributes(params[:user])
+    UserMailer.update_email(user).deliver
       flash[:success] = "Profile updated"
-      sign_in @user
-      redirect_to @user
+         cookies.permanent[:remember_token] = user.remember_token
+         @current_user = user
+      redirect_to user
     else
       render 'edit'
     end

@@ -13,6 +13,8 @@
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
 #  remember_token  :string(255)
+#  limo            :boolean          default(FALSE)
+#  van             :boolean          default(FALSE)
 #
 
 require 'spec_helper'

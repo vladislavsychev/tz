@@ -13,5 +13,13 @@
 
 <%= f.label :password_confirmation, "Подтверждение пароля" %>
 <%= f.password_field :password_confirmation, placeholder: "Можно этого не делать, но стоит ли рисковать?" %>
-<h5>Добавить фотографии автомобиля? <a class='linktooltip' data-original-title="Удерживая Ctrl или Shift выберите до 4 файлов формата jpeg/jpg/png. Файлы не должны быть больше 150kb  каждый." rel="popover" href="#">Просто!</a></h5> 
+Получать информацию о <a class='linktooltip' data-original-title="Все новые заказы выбранной Вами категории будут поступать на ваш email" rel="popover" href="#">новых заказах</a>
+<ul class="unstyled" style="margin-left: 20px; margin-bottom: 20px">
+  <li><%= check_box_tag 'user[limo]', true, true %> лимузинов</li>
+
+  <li><%= check_box_tag 'user[van]', true %> VIP минивэнов</li>
+</ul>
+<h5>
+Добавить фотографии автомобиля? <a class='linktooltip' data-original-title="Зажав Ctrl или Shift выберите 4 фото в формате jpeg, jpg, png до 200kb  каждая." rel="popover" href="#">Просто!</a></h5> 
 <%= file_field_tag('user_attached_assets_asset', multiple: true, size: "15", name: "user[attached_assets_attributes][][asset]", placeholder: "Выбрать фотографии", class: "btn btn-small") %>
+

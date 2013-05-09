@@ -3,12 +3,14 @@
   <aside class="span2">
     <%= render 'search_form' %>
   </aside>
-  <div class="span9">
-   <h2>Открытые заказы</h2>
+  <div class="span10" style: "margin-top: -100px">
+   <h4>
+     Открытые заказы
+   </h4>
      <%= will_paginate %>
-       <ol class="contracts">
+       
          <%= render @contracts %>
-       </ol>
+       
      <%= will_paginate %>
   </div>
 </div>

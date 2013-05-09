@@ -1,20 +1,20 @@
-<h1><%= @contract.t_car %></h1>
- 
+<h4><%= @contract.t_car %></h4>
+<div class="span3"> 
   <ul>
     <% if @contract.close_contract? %>
       <li><span class="badge badge-error"> Закрыта</span></li>
     <% end %>
       <li><span class="badge badge-warning"><%= @contract.date_rent.to_s(:ru_date) %> в <%= @contract.time_rent %></span> </li>
       <li><span class="badge badge-success"><%= @r_hour = @contract.lease_time %> 
-  <% if @r_hour > 4 %> 
-     часов аренды</span></li>
-  <% else %>
-     часа аренды</span></li>
-  <% end %>
-<li><span class="badge">для <%= @contract.contractor_name %></span></li>
-</ul>
-
-
+        <% if @r_hour > 4 %> 
+          часов аренды</span></li>
+        <% else %>
+          часа аренды</span></li>
+        <% end %>
+      <li><span class="badge">для <%= @contract.contractor_name %></span></li>
+  </ul>
+</div>
+<div class="span7">
 <% if !current_user.nil? && current_user.admin? %>
  <%= @contract.contractor_mphone %> < <%= @contract.contractor_email %> >
  <%= link_to "delete", @contract, method: :delete, data: { confirm: "You sure?" } %>
@@ -22,6 +22,7 @@
 <% end %>
 
   <p> <%= wrap(@contract.body_contract) %> </p>
-<hr/>
+</div>
+
  
 

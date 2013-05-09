@@ -1,10 +1,5 @@
-<li>
-  <span class="timestamp"> 
-     <% if contract.close_contract == true %>
-       <b>
-         ЗАКРЫТ! |
-       </b>
-     <% end %>
+<div class="span8"  style="margin-bottom: 30px">
+    <span class="timestamp"> 
      <span class="badge badge-warning">
        <%= contract.date_rent.to_s(:ru_date) %> 
        <%= contract.time_rent %>
@@ -30,10 +25,12 @@
   <span class="content">   
      <%= link_to wrap(contract.body_contract), contract %>
   </span>
- <small>
-  Предложений 
-     <%= contract.offers.count %>
- </small>
-</li>
+  <small>
+   Предложений 
+      <%= contract.offers.count %>
+  </small>
+</div>
+
+
 
 
