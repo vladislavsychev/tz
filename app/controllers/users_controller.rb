@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -
 class UsersController < ApplicationController
 
 before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
@@ -40,7 +41,7 @@ before_filter :admin_user,     only: [:destroy, :index]
     if @user.save
         # Tell the UserMailer to send a welcome Email after save
         UserMailer.welcome_email(@user).deliver
-      flash[:success] = "Welcome to the TaxiZi! Good luck and best deal."
+      flash[:success] = "Вы новый пользователь Такси Zi. Добро пожаловать!"
       sign_in @user
       redirect_to @user
     else
@@ -56,7 +57,7 @@ before_filter :admin_user,     only: [:destroy, :index]
     user = User.find(params[:id])
     if user.update_attributes(params[:user])
     UserMailer.update_email(user).deliver
-      flash[:success] = "Profile updated"
+      flash[:success] = "Личная информация успешно отредактирована."
          cookies.permanent[:remember_token] = user.remember_token
          @current_user = user
       redirect_to user
@@ -67,7 +68,7 @@ before_filter :admin_user,     only: [:destroy, :index]
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User destroyed."
+    flash[:success] = "Пользователь удален."
     redirect_to users_url
   end
 

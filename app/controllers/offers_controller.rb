@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -
 class OffersController < ApplicationController
 
   before_filter :signed_in_user, only: [:create, :destroy]
@@ -15,9 +16,9 @@ class OffersController < ApplicationController
       offer = current_user.offers.create(params[:offer])
        unless offer.id == nil
         UserMailer.new_offer_email(offer).deliver
-        flash[:success] = "Your offer #{offer.id}, price #{offer.price} put on."
+        flash[:success] = "Ваше предложение #{offer.id}, цена #{offer.price} размещено."
        else
-        flash[:error] = "Your offer reject."
+        flash[:error] = "Ваше предложение не принято. Возможно ошибка. Попробуйте еще раз."
        end
     end 
     redirect_to @contract
@@ -39,9 +40,9 @@ class OffersController < ApplicationController
           c_closed = offer_for_bang.contract.toggle!(:close_contract)
        if o_taken && c_closed
           UserMailer.offer_taken_email(offer_for_bang).deliver
-          flash[:success] = "Bang! Offer taken. Pre order closed."
+          flash[:success] = "Предложение принято. Вам отправлено письмо к контактами исполнителя. Удачи."
        else
-          flash[:error] = "Wrong taken."
+          flash[:error] = "Какая то ошибка. Проверьте Пин-код и попробуйте еще раз."
        end
        
        redirect_to offer_for_bang.contract

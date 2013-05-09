@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -
 class ContractsController < ApplicationController
 
 before_filter :correct_code, only: [:valid, :close, :update, :destroy]
@@ -29,7 +30,7 @@ before_filter :correct_code, only: [:valid, :close, :update, :destroy]
     if @contract.save
 #    Tell the UserMailer to send validation email to contractor_email
       UserMailer.activate_contract_email(@contract).deliver
-      flash[:success] = "Pre order made. Read email and valid contract"
+      flash[:success] = "Ваш заказ предварительно принят. Вам на email отправлено письмо. Прочитайте его и подтвердите заказ."
       redirect_to @contract
     else
       render 'new'
@@ -62,7 +63,7 @@ before_filter :correct_code, only: [:valid, :close, :update, :destroy]
       render 'edit'
     end
    else
-     flash[:error] = "Prohibet edit the contract after first offer"
+     flash[:error] = "Заказ разрешается редактировать только до первого предложения."
      redirect_to @contract
    end
   end
@@ -70,7 +71,7 @@ before_filter :correct_code, only: [:valid, :close, :update, :destroy]
   def valid
     if correct_code
       @contract.toggle!(:active)
-      flash[:success] = "Now the pre order is active."
+      flash[:success] = "Заказ подтвержден. Потенциальным исполнителям выслана информация."
       UserMailer.infoletter_email(@contract)
     end
       redirect_to @contract || root_path
@@ -79,7 +80,7 @@ before_filter :correct_code, only: [:valid, :close, :update, :destroy]
   def close
      if correct_code
        @contract.toggle!(:close_contract)
-       flash[:success] = "Now the pre order is finish"
+       flash[:success] = "Заказ закрыт."
      end
        redirect_to @contract || root_path
   end
@@ -87,7 +88,7 @@ before_filter :correct_code, only: [:valid, :close, :update, :destroy]
   def destroy
     if correct_code
       Contract.find(params[:id]).destroy
-      flash[:success] = "Pre order destroyed."
+      flash[:success] = "Заказ удален."
       redirect_to contracts_url
     else
       redirect_to @contract || root_path
@@ -103,7 +104,7 @@ private
        if (params[:q] == @contract.created_at.to_i.to_s.split('').reverse.join[0..3]) || (!current_user.nil? && current_user.admin?)
          return true
        else
-         flash[:error] = 'Incorrect PIN-code.'
+         flash[:error] = 'Ошибка в Пин-коде.'
          return false
        end
      else
