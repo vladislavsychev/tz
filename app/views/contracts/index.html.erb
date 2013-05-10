@@ -12,8 +12,11 @@
           <%= render @contracts %>
        <%= will_paginate %>
      <% else %>
-       <h2><%= link_to 'Если вы хотите принимать заказы и делать свои предложения заказчику зарегистрируйтесь пожалуйста в качестве исполнителя заказов', signup_path %></h2>
-       <center><%= image_tag('limo_300-200.png') %></center>
+       <h2>Если вы хотите принимать заказы и делать свои предложения заказчикам <%= link_to 'зарегистрируйтесь', signup_path %> пожалуйста в качестве исполнителя заказов</h2>
+       <center>
+         <%= image_tag('limo_300-200.png') %><br/>
+         <a href="http://taxizi.ru/signup" class="btn btn-large btn-info">Регистрация</a>
+       </center>
      <% end %>
   </div>
 </div>
