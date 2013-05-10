@@ -1,16 +1,17 @@
-<div class="span8"  style="margin-bottom: 30px">
-    <span class="timestamp"> 
-     <span class="badge badge-warning">
+<div class="span8"  style="margin-bottom: 30px"> 
+     <span style="color: #696">
        <%= contract.date_rent.to_s(:ru_date) %> 
        <%= contract.time_rent %>
      </span> 
-     <span class="badge badge-info">
-       <%= contract.t_car %>
+     <span style="color: #669">
+      <strong>
+       <%= contract.t_car.upcase %>
+      </strong>
      </span> 
-     <span class="badge badge-success">
+     <span style="color: #d96">
       на <%= contract.lease_time %> часа/ов
      </span> 
-     <span class="badge">
+     <span>
        для <%= contract.contractor_name %>
      </span> 
      <% if !current_user.nil? && current_user.admin? %>
@@ -21,7 +22,7 @@
        |   <%= link_to "edit", edit_contract_path(contract.id) %>
        ]<br/>
      <% end %>
-  </span>
+
   <span class="content">   
      <%= link_to wrap(contract.body_contract), contract %>
   </span>
