@@ -58,8 +58,7 @@ before_filter :admin_user,     only: [:destroy, :index]
     if user.update_attributes(params[:user])
     UserMailer.update_email(user).deliver
       flash[:success] = "Личная информация успешно отредактирована."
-         cookies.permanent[:remember_token] = user.remember_token
-         @current_user = user
+      sign_in user
       redirect_to user
     else
       render 'edit'
@@ -80,8 +79,7 @@ before_filter :admin_user,     only: [:destroy, :index]
          asset.asset.clear
          asset.destroy
          user.save(:validate => false)
-         cookies.permanent[:remember_token] = user.remember_token
-         @current_user = user
+         sign_in user
          redirect_to edit_user_path(user)
       else
          redirect_to root_path
