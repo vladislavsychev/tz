@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -
 # == Schema Information
 #
 # Table name: users
@@ -35,7 +36,7 @@ class User < ActiveRecord::Base
   VALID_MPHONE_REGEX = /\A\d{6,11}\z/
 
   validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :name, format: { with: VALID_NAME_REGEX }
+  validates :name, length: { minimum: 4 }
   validates :mphone, format: { with: VALID_MPHONE_REGEX }, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }  
   validates :password_confirmation, presence: true
