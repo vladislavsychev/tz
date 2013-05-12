@@ -4,7 +4,7 @@
   <aside class="span4">
    <div>
     <% unless @contract.active? %>
-     <section class="left-label thumbnail rose-paper"><hr/>
+     <div class="thumbnail rose-paper"><hr/>
         <center>
           <%= form_tag("/contracts/#{@contract.id}/valid") do %>
            <%= render 'shared/valid_field' %>
@@ -12,7 +12,7 @@
           <% end %>
         </center>
        <p align="justify">
-        <b>
+         <small>
           Признавая желание заказчика избежать процедуры регистрации на сайте,  
           мы используем ПИН-КОД для распознавания. 
           Процедура подтверждения заказа позволяет избежать спама и ложных запросов. 
@@ -20,48 +20,48 @@
           ВНИМАНИЕ: При отсутствии подтверждения заказ удаляется в течении 24 часов после его формирования.
           До тех пор пока заказ не подтвержден, он не доступен для поиска и его не видно на 
           <%= link_to 'странице заказов.', contracts_path %>
-        </b>
         <br/>
-        <small>
-         Если вы забыли пин-код перейдите на страницу восстановления пин-кода. Если вы не получили пин-код обратитесь в службу обслуживания клиентов. 
+         Если вы забыли или не получили пин-код обратитесь в службу обслуживания клиентов.
+         <%= link_to 'Помощь', help_path %> 
         </small>
        </p>
-     </section>   
+     </div>   
     <% end %>
+   
     <% if  @contract.active? && !@contract.close_contract? %>
       <% if signed_in? %>
         <section>   
           <%= render 'shared/offer_form' %>
         </section>
       <% else %>
-       <section>
-        <span class="label label-info">
+       <div class="thumbnail blue-paper">
         <b> Заказчик в любой момент может...</b><hr/>
           <%= form_tag("/contracts/#{@contract.id}/close", :method => "get") do %>
               <%= render 'shared/valid_field' %>
               <%= submit_tag("Закрыть заявку", class: "btn btn-mini") %>
           <% end %>
-        </span>
-        </section>
-        <section class="thumbnail white-vatmann">
+        </div>
+
+        <div class="thumbnail white-vatmann">
            <p class="muted"  align="justify"> <%= link_to 'Разместите', new_contract_path %> заказ и возьмите лучшее предложение. Регистрация не требуется.</p> 
            <p class="muted"  align="justify">Есть предложение? Вы должны <%= link_to "войти", signin_path %> на сайт под своим логином и паролем.</p>
            <p class="muted"  align="justify"> Если вы еще не зарегистрировались сделайте это сейчас. <%= link_to 'Регистрация.', signup_path %> </p>
-        </section>
+        </div>
       <% end %>
      <% end %>
+
      <% if @contract.close_contract? %>
-       <section class="left-label thumbnail rose-paper">
+       <div class="thumbnail blue-paper">
           <h4>Заказ закрыт.</h4>
             <p class="muted">После закрытия заказа новые предложения не принимаются.</p>
-       </section>
+       </div>
      <% end %>
    </div>
   </aside>
 
  <div class="span8">
   <%= render 'contract_preview_big_show' %>
- <div class="span7">
+ <div class="span8">
   <% if !@contract.close_contract? %>
 
      <% if !@offers.nil? %>
