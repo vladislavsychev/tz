@@ -4,19 +4,13 @@
     <%= render 'search_form' %>
   </aside>
   <div class="span10" style: "margin-top: -100px">
-    <% if signed_in? %>
+ 
       <h4>
         Открытые заказы
       </h4>
        <%= will_paginate %>
           <%= render @contracts %>
        <%= will_paginate %>
-     <% else %>
-       <h2>Если вы хотите принимать заказы и делать свои предложения заказчикам <%= link_to 'зарегистрируйтесь', signup_path %> пожалуйста в качестве исполнителя заказов</h2>
-       <center>
-         <%= image_tag('limo_300-200.png') %><br/>
-         <a href="http://taxizi.ru/signup" class="btn btn-large btn-info">Регистрация</a>
-       </center>
-     <% end %>
+ 
   </div>
 </div>
