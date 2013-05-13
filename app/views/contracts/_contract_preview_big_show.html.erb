@@ -4,7 +4,7 @@
     <% if @contract.close_contract? %>
       <li><span class="badge badge-error"> Закрыта</span></li>
     <% end %>
-      <li><span class="badge badge-warning"><%= @contract.date_rent.to_s(:ru_date) %> в <%= @contract.time_rent %></span> </li>
+      <li><span class="badge badge-warning"><%= I18n.l @contract.date_rent, :format => :long  %> в <%= @contract.time_rent %></span> </li>
       <li><span class="badge badge-success"><%= @r_hour = @contract.lease_time %> 
         <% if @r_hour > 4 %> 
           часов аренды</span></li>

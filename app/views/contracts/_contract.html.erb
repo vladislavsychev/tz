@@ -1,6 +1,6 @@
 <div class="span8"  style="margin-bottom: 30px"> 
      <span style="color: #696">
-       <%= contract.date_rent.to_s(:ru_date) %> 
+       <%= I18n.l contract.date_rent, :format => :long %> 
        <%= contract.time_rent %>
      </span> 
      <span style="color: #669">
