@@ -4,13 +4,11 @@
     <%= render 'search_form' %>
   </aside>
   <div class="span10" style: "margin-top: -100px">
- 
       <h4>
         Открытые заказы
       </h4>
        <%= will_paginate %>
           <%= render @contracts %>
        <%= will_paginate %>
- 
   </div>
 </div>

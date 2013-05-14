@@ -159,7 +159,7 @@ ru:
         few: ! '%{model}: сохранение не удалось из-за %{count} ошибок'
         many: ! '%{model}: сохранение не удалось из-за %{count} ошибок'
         one: ! '%{model}: сохранение не удалось из-за %{count} ошибки'
-        other: ! '%{model}: сохранение не удалось из-за %{count} ошибки'
+        other: ! '%{model}: сохранение не удалось из-за %{count} ошибок'
   helpers:
     select:
       prompt: ! 'Выберите: '
@@ -253,24 +253,23 @@ ru:
     errors:
       <<: *errors
   activerecord:
-    errors:
-      <<: *errors
-    models:
-      user:
-       attributes:
+      models:
+        user: "Исполнитель"
+        contract: "Заказ"
+      attributes:
         user:
-         name: "Ваше имя"
-         mphone: "Мобильный телефон"
-         password: "Пароль"
-         password_confirmation: "Подтверждение пароля"
-      contract:
-       attributes:
+          name: "Имя"
+          mphone: "Номер мобильного телефона"
+          email: "Электронная почта" 
+          password: "Пароль"
+          password_confirmation: "Подтверждение пароля"
         contract:
-         contractor_name: "Имя заказчика"
-         contractor_mphone: "Мобильный телефон заказчика"
-         contractor_email: "Email заказчика"
-         date_rent: "Дата аренды"
-         time_rent: "Время подачи автомобиля"
-         lease_time: "Период аренды"
-         body_contract: "Условия заказа"
-        
+          contractor_email: "Электронная почта заказчика"
+          contractor_name: "Имя заказчика"
+          contractor_mphone: "Мобильный телефон заказчика"
+          body_contract: "Условия заказа"
+          date_rent: "Дата подачи автомобиля"
+          time_rent: "Время подачи автомобиля"
+      errors:
+        <<: *errors
+      

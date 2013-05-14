@@ -7,7 +7,15 @@
     <%= form_for @user, :html => { :multipart => true } do |f| %>
      <%= render 'shared/error_messages', object: f.object %>
       <%= render 'fields', f: f %>
-       <%= f.submit "Зарегистрироваться", class: "btn btn-warning" %>
+  <hr>  
+  <small>
+    Нажимая кнопку «Зарегистрироваться», я принимаю условия <%= link_to 'Соглашения', about_path %> и даю своё согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных <%= link_to 'Соглашением.', about_path %>  
+   </small> 
+     <br>
+      <%= check_box_tag 'user[agree]' %> Я согласен.
+     <hr>
+      <%= f.submit "Зарегистрироваться", class: "btn btn-warning" %>
+
     <% end %>
    </div>
   </div>
