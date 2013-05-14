@@ -256,14 +256,14 @@ ru:
     errors:
       <<: *errors
     models:
-      user: Пользователь
+      user:
        attributes:
         user:
          name: "Ваше имя"
          mphone: "Мобильный телефон"
          password: "Пароль"
          password_confirmation: "Подтверждение пароля"
-      contract: Заказ
+      contract:
        attributes:
         contract:
          contractor_name: "Имя заказчика"
