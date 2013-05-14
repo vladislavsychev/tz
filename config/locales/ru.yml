@@ -257,9 +257,20 @@ ru:
       <<: *errors
     models:
       user: Пользователь
-    attributes:
-      user:
-        name: "Ваше имя"
-        mphone: "Мобильный телефон"
-        password: "Пароль"
-        password_confirmation: "Подтверждение пароля"
+       attributes:
+        user:
+         name: "Ваше имя"
+         mphone: "Мобильный телефон"
+         password: "Пароль"
+         password_confirmation: "Подтверждение пароля"
+      contract: Заказ
+       attributes:
+        contract:
+         contractor_name: "Имя заказчика"
+         contractor_mphone: "Мобильный телефон заказчика"
+         contractor_email: "Email заказчика"
+         date_rent: "Дата аренды"
+         time_rent: "Время подачи автомобиля"
+         lease_time: "Период аренды"
+         body_contract: "Условия заказа"
+        

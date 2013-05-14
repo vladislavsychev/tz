@@ -7,8 +7,7 @@
          
        <% else %>
          <%= image_tag(use.asset.url(:middle)) %>
-         <small> 
-           <%= link_to 'В большом разрешении', use.asset.url %></small>
+
        <% end %>
 
        <center><span class="label label-warning"><%= offer.price %> рублей.</span></center>
@@ -28,7 +27,7 @@
     <% end %>
 
     <% if current_user.nil? && offer.contract.close_contract == false %>
-      <%= link_to 'фотографии большого размера, принять заявку',  offer_path(offer.id) %> 
+      <%= link_to 'все фотографии | принять заявку',  offer_path(offer.id) %> 
       <% elsif current_user == offer.user && offer.contract.close_contract == false %>
       <%= link_to( '[отозвать предложение]', offer, method: :delete, data: { confirm: "You sure?" } ) %>     
     <% end %>
