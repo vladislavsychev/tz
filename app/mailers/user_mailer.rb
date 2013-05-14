@@ -52,7 +52,7 @@ class UserMailer < ActionMailer::Base
     @contract = contract
     @uawe_all = Array.new
     @user_all = User.select(:email).where(:name => 'VLADISLAV SYCHEV').map(&:email)
-    mail(to: "contract@taxizi.ru", bcc: user_all, subject: "Открытый заказ #{@contract.t_car} на Taxi Zi")
+    mail(to: "contract@taxizi.ru", bcc: @user_all, subject: "Открытый заказ #{@contract.t_car} на Taxi Zi")
   end
 
 end
