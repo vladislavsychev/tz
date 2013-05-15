@@ -1,4 +1,6 @@
 ru:
+  next: Следующая
+  previous: Предыдущая
   date:
     abbr_day_names:
     - Вс
@@ -254,14 +256,14 @@ ru:
       <<: *errors
   activerecord:
       models:
-        user: "Исполнитель"
-        contract: "Заказ"
+        user: Исполнитель
+        contract: Заказ
       attributes:
         user:
-          name: "Имя"
+          name: Имя
           mphone: "Номер мобильного телефона"
           email: "Электронная почта" 
-          password: "Пароль"
+          password: Пароль
           password_confirmation: "Подтверждение пароля"
         contract:
           contractor_email: "Электронная почта заказчика"

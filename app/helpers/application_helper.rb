@@ -15,6 +15,13 @@ module ApplicationHelper
     sanitize(raw(content.split.map{ |s| wrap_long_string(s) }.join(' ')))
   end
 
+  # enable i18n in will_paginate
+  include WillPaginate::ViewHelpers
+
+  def will_paginate_with_i18n(collection = nil, options = {})
+    will_paginate collection, options.merge(:previous_label => I18n.t(:previous), :next_label => I18n.t(:next))
+  end
+
   private
 
     def wrap_long_string(text, max_width = 30)
