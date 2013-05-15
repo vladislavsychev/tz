@@ -8,12 +8,12 @@
      <%= render 'shared/error_messages', object: f.object %>
       <%= render 'fields', f: f %>
   <hr>  
-  <small>
-    Нажимая кнопку «Зарегистрироваться», я принимаю условия <%= link_to 'Соглашения', about_path %> и даю своё согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных <%= link_to 'Соглашением.', about_path %>  
-   </small> 
-     <br>
-      <%= check_box_tag 'agree' %> Я согласен.
-     <hr>
+  <p> 
+    <small>
+      <%= check_box_tag 'agree' %> Я принимаю  <%= link_to 'пользовательское соглашения', about_path %>
+    </small>
+   </p>
+  
       <%= f.submit "Зарегистрироваться", class: "btn btn-warning" %>
 
     <% end %>
