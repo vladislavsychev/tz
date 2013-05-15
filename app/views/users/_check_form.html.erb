@@ -1,0 +1,36 @@
+<script language="javascript">
+ function checkedForm(form){
+    if(new_user.user_email.value==""){
+      alert('Не указан Email.');
+      new_user.user_email.focus();
+      return false;
+    };
+    if(new_user.user_mphone.value==""){
+      alert('Не указан номер мобильного телефона.');
+      new_user.user_mphone.focus();
+      return false;
+    };
+    if(new_user.user_password.value==""){
+      alert('Не указан пароль.');
+      new_user.user_password.focus();
+      return false;
+    };
+      if(new_user.agree.checked == false){
+      alert('Вы не дали согласия на сбор и обработку персональный данных');
+      new_user.agree.focus();
+      return false;
+    };
+    if(!(/[0-9]{10}$/.test(new_user.user_mphone.value))){
+      alert('Мобильный телефон должен состоять только из 10 цифр');
+      new_user.user_mphone.focus();
+      return false;
+    }; 
+    if(! (/^[a-zA-Z0-9_\-\.]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/.test(new_user.user_email.value))){
+      alert("Ошибка в E-mail!");
+      new_user.user_email.focus();
+      return false;
+    };   
+ return true;
+};
+</script>
+

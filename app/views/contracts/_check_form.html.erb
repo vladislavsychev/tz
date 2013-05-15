@@ -1,0 +1,61 @@
+<script language="javascript">
+ function checkedForm(form){
+    if(new_contract.datepicker.value==""){
+      alert('Не указана дата когда требуется автомобиль.');
+      new_contract.datepicker.focus();
+      return false;
+    };
+    if(new_contract.contract_time_rent.value==""){
+      alert('Не указано время подачи автомобиля.');
+      new_contract.contract_time_rent.focus();
+      return false;
+    };
+    if(new_contract.contract_lease_time.value==""){
+      alert('Не указана на сколько часов требуется автомобиль.');
+      new_contract.contract_lease_time.focus();
+      return false;
+    };
+    if(new_contract.contract_contractor_name.value==""){
+      alert('Пожалуйста напишите имя заказчика.');
+      new_contract.contract_contractor_name.focus();
+      return false;
+    };
+    if(new_contract.contract_contractor_email.value==""){
+      alert('Не указан email заказчика. Вы не сможете получать предложения.');
+      new_contract.contract_contractor_email.focus();
+      return false;
+    };
+    if(new_contract.contract_contractor_mphone.value==""){
+      alert('Вы не написали номер мобильного телефона. С вами будет невозможно связаться.');
+      new_contract.contract_contractor_mphone.focus();
+      return false;
+    };
+    if(new_contract.contract_body_contract.value==""){
+      alert('Не указаны условия заказа.');
+      new_contract.contract_body_contract.focus();
+      return false;
+    };
+    if(new_contract.agree.checked == false){
+      alert('Вы не дали согласия на сбор и обработку персональный данных');
+      new_contract.agree.focus();
+      return false;
+    };
+    if(!(/[0-9]{10}$/.test(new_contract.contract_contractor_mphone.value))){
+      alert('Мобильный телефон заказчика должен состоять только из 10 цифр');
+      new_contract.contract_contractor_mphone.focus();
+      return false;
+    }; 
+    if(! (/^[a-zA-Z0-9_\-\.]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/.test(new_contract.contract_contractor_email.value))){
+      alert("Ошибка в E-mail!");
+      new_contract.contract_contractor_email.focus();
+      return false;
+    };   
+    if(new_contract.contract_contractor_name.length < 4){
+       alert('Имя заказчика должно быть не менее 4-х символов.');
+       new_contract.contract_contractor_name.focus();
+       return false;
+    }; 
+ return true;
+};
+</script>
+
