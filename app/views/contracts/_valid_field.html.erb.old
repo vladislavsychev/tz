@@ -1,4 +1,0 @@
-<%= label_tag(:q, "Код активации:") %>
-<%= text_field_tag(:q, nil, placeholder: '******', :size => 10) %>
-
- 
