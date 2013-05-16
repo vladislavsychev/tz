@@ -72,8 +72,8 @@ Tz::Application.configure do
      config.action_mailer.smtp_settings = {
        :address              => "smtp.yandex.ru",
        :port                 => 587,
-       :domain               => 'taxizi.ru',
-       :user_name            => 'support@taxizi.ru',
+       :domain               => 'taxizi.info',
+       :user_name            => 'info@taxizi.info',
        :password             => 'yandex2013',
        :authentication       => :login,
        :enable_starttls_auto => true  }
