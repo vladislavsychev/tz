@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Здравствуйте.</h1>
+    <p>
+      На сайте http://taxizi.ru был размещен заказ:</p>
+    <p>
+      <%= @contract.t_car %> </br>
+      <%= @contract.date_rent %> </br>
+      <%= @contract.time_rent %> </br>
+      на <%= @contract.lease_time %></br>
+      <%= @contract.body_contract %>
+    </p>
+    <p>
+      Если это Вас интересует Вы можете перейти по адресу http://taxizi.ru/contracts/<%= @contract.id %> и сделать свое предложение.
+    </p>
+ 
+Не отвечайте на это письмо. Письмо сгенерировано и отослано автоматической службой уведомления клиентов.
+  </body>
+</html>

@@ -20,7 +20,7 @@
       <li>мобильный телефон: <%= @offer.user.mphone %></li>
     </ul>
     <p> 
-      Заказ http://taxizi.ru/contracts/<%= @offer.contract.id %> размещенный на сайте http://taxizi.ru ЗАКРЫТ!
+      Заказ http://taxizi.ru/contracts/<%= @offer.contract.id %> размещенный на сайте http://taxizi.ru закрыт принятия заявки.
     </p>
     <ul>
       <li><%= @offer.contract.t_car %> </li>
@@ -31,7 +31,7 @@
      <%= @offer.contract.body_contract %>
       
     <p> Заказчик принял следующее предложение:<br/>
-    <%= @offer.user.name %> предлагает исполнить ваш заказ за <%= @offer.price %> рублей.
+    <%= @offer.user.name %> предлагает исполнить ваш заказ за <%= @offer.price %> рублей.<br/>
     <i> <%= @offer.adword %></i>
     </p>  
     <p>

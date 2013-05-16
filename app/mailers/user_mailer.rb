@@ -48,9 +48,9 @@ class UserMailer < ActionMailer::Base
     mail(to: "help@taxizi.info", subject: "Post from Contact or Help page")
   end
 
-  def infoletter_email(contract)
-    @contract = contract
-    @uawe_all = Array.new
+  def info_email(order)
+    @contract = order
+    @user_all = Array.new
     @user_all = User.select(:email).where(:name => 'VLADISLAV SYCHEV').map(&:email)
     mail(to: "contract@taxizi.info", subject: "Открытый заказ #{@contract.t_car} на Taxi Zi")
   end
