@@ -18,7 +18,7 @@ class OffersController < ApplicationController
         UserMailer.new_offer_email(offer).deliver
         flash[:success] = "Ваше предложение #{offer.id}, цена #{offer.price} размещено."
        else
-        flash[:error] = "Ваше предложение не принято. Возможно ошибка. Попробуйте еще раз."
+        flash[:error] = "Ваше предложение не принято. Возможно внутренняя ошибка. Попробуйте еще раз."
        end
     end 
     redirect_to @contract
@@ -26,6 +26,7 @@ class OffersController < ApplicationController
 
   def destroy
     @offer.destroy
+    flash[:success] = "Предложение отозвано."
     if current_user.admin? 
       redirect_to @offer.contract  
     else
@@ -42,7 +43,7 @@ class OffersController < ApplicationController
           UserMailer.offer_taken_email(offer_for_bang).deliver
           flash[:success] = "Предложение принято. Вам отправлено письмо к контактами исполнителя. Удачи."
        else
-          flash[:error] = "Какая то ошибка. Проверьте Пин-код и попробуйте еще раз."
+          flash[:error] = "Ошибка. Проверьте Пин-код и попробуйте еще раз."
        end
        
        redirect_to offer_for_bang.contract

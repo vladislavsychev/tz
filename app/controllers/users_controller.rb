@@ -93,22 +93,22 @@ before_filter :admin_user,     only: [:destroy, :index]
         user.update_attributes(:password => newpass, :password_confirmation => newpass)
         user[:password] = newpass
         UserMailer.newpass_email(user).deliver
-        respond_to do |format|
-          format.html { redirect_to signin_path }
-          format.js
-        end
+        flash[:success] = "Новый пароль был выслан на Ваш email."
+        redirect_to signin_path 
       end
   end
 
   def posts
-    if !params[:email].empty? && !params[:name] && !params[:phone] && !params[:content] 
+    if !params[:email].empty? && !params[:name].empty? && !params[:phone].empty? && !params[:content].empty? 
+     asqer = Hash.new
      asqer[:email] = params[:email]
      asqer[:name] = params[:name]
      asqer[:phone] = params[:phone]
      asqer[:content] = params[:content]
      UserMailer.posts_email(asqer).deliver
+     flash[:success] = "Ваше письмо получено. Мы приступили к его обработке. Спасибо. Мы всегда готовы помочь. Мы всегда готовы к сотрудничеству."
     end
-     redirect root_path
+     redirect_to root_path
   end
 
   private
