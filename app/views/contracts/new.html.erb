@@ -18,9 +18,8 @@
      </ul>
    </small> 
  </div>
-    <h1>Выбери лучшее</h1>
-    <div class="span9 thumbnail" style="margin-top: -18px;">
-      <h2>Такси Zi. Лимузины стали доступнее.</h2>
+   <%= image_tag('limo.png') %>    
+    <div class="span9 thumbnail white-vatmann" style="margin-top: -18px;">
        <%= form_for(@contract, html: { onSubmit: 'return checkedForm(this)' }) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
          <%= render 'contract_field', f: f %>

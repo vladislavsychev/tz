@@ -40,7 +40,7 @@ before_filter :admin_user,     only: [:destroy, :index]
     @user = User.new(params[:user])
     if @user.save
         # Tell the UserMailer to send a welcome Email after save
-        UserMailer.welcome_email(@user).deliver
+      UserMailer.welcome_email(@user).deliver
       flash[:success] = "Вы новый пользователь Такси Zi. Добро пожаловать!"
       sign_in @user
       redirect_to @user
