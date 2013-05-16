@@ -93,9 +93,9 @@ before_filter :admin_user,     only: [:destroy, :index]
         user.update_attributes(:password => newpass, :password_confirmation => newpass)
         user[:password] = newpass
         UserMailer.newpass_email(user).deliver
-        flash[:success] = "Новый пароль был выслан на Ваш email."
+        flash.now[:success] = "Новый пароль был выслан на Ваш email."
       else
-        flash[:error] = "Пользователя с таким email нет в нашей базе."
+        flash.now[:error] = "Пользователя с таким email нет в нашей базе."
       end
         
   end
