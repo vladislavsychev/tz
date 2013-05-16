@@ -94,8 +94,10 @@ before_filter :admin_user,     only: [:destroy, :index]
         user[:password] = newpass
         UserMailer.newpass_email(user).deliver
         flash[:success] = "Новый пароль был выслан на Ваш email."
-        redirect_to signin_path 
+      else
+        flash[:error] = "Пользователя с таким email нет в нашей базе."
       end
+        
   end
 
   def posts
