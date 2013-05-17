@@ -3,7 +3,7 @@
  
     <!-- Carousel -->
      <% size_collection = offer.user.attached_assets.size %>
-     <% if size_collection > 0 %>
+     <% if size_collection > 1 %>
          <div id="<%= offer.id %>Carousel" class="carousel slide">
            <!-- Carousel items -->
             <div class="carousel-inner">
@@ -17,8 +17,10 @@
               <a class="carousel-control left" href="#<%= offer.id %>Carousel" data-slide="prev">&lsaquo;</a>
               <a class="carousel-control right" href="#<%= offer.id %>Carousel" data-slide="next">&rsaquo;</a>
          </div>
+     <% elsif size_collection == 1 %>
+       <%= image_tag(offer.user.attached_assets.asset.url(:middle)) %> 
      <% else %>
-       <center><%= image_tag('default_photo.jpg') %></center>      
+       <%= image_tag('default_photo.jpg') %>      
      <% end%>
    <!-- Carousel end -->
 
