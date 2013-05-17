@@ -72,7 +72,7 @@ before_filter :correct_code, only: [:valid, :close, :update, :destroy]
     if correct_code
       @contract.toggle!(:active)
       flash[:success] = "Заказ подтвержден. Потенциальным исполнителям выслана информация."
-      UserMailer.info_email(@contract)
+      UserMailer.info_email(@contract).deliver
     end
       redirect_to @contract || root_path
   end
