@@ -1,0 +1,40 @@
+<li id="<%= offer.id %>" class="span4">
+   <div class="thumbnail">  
+     <%  use = offer.user.attached_assets.first %>
+       <% if use.nil? %>
+         <%= image_tag('default_photo.jpg') %>
+         <small>...</small>
+         
+       <% else %>
+         <%= image_tag(use.asset.url(:middle)) %>
+
+       <% end %>
+
+       <center><span class="label label-warning"><%= offer.price %> рублей.</span></center>
+       <p><i> 
+        <% if !offer.adword.nil? %>
+         <%= wrap(offer.adword).split('').join[0..50] %>...</i>
+        <% else %>
+         Dolore sit corrupti error nemo nobis ut sit ipsa ut</i>
+        <% end %>
+         <%= link_to offer.user.name, user_path(offer.user) %></p>
+       <hr/>
+
+  <small>
+    <% if !current_user.nil? && current_user.admin? %>
+      <%= link_to '[delete]', offer, method: :delete, data: {confirm: "Delete offer?"} %>
+      <%= link_to '[полностью]',  offer_path(offer.id) %>
+    <% end %>
+
+    <% if current_user.nil? && offer.contract.close_contract == false %>
+      <%= link_to 'все фотографии | принять заявку',  offer_path(offer.id) %> 
+      <% elsif current_user == offer.user && offer.contract.close_contract == false %>
+      <%= link_to( '[отозвать предложение]', offer, method: :delete, data: { confirm: "You sure?" } ) %>     
+    <% end %>
+
+  </small>
+
+ </div>
+</li>
+
+

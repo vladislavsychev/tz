@@ -1,40 +1,42 @@
 <li id="<%= offer.id %>" class="span4">
-   <div class="thumbnail">  
-     <%  use = offer.user.attached_assets.first %>
-       <% if use.nil? %>
-         <%= image_tag('default_photo.jpg') %>
-         <small>...</small>
-         
-       <% else %>
-         <%= image_tag(use.asset.url(:middle)) %>
+  <div class="thumbnail"> 
+ 
+    <!-- Carousel -->
+     <% size_collection = offer.user.attached_assets.size %>
+     <% if size_collection > 0 %>
+         <div id="<%= offer.id %>Carousel" class="carousel slide">
+           <!-- Carousel items -->
+            <div class="carousel-inner">
+              <% photo_item_class = 'active item' %>
+                <% offer.user.attached_assets.each do |use| %>
+                   <div align='center' class="<%= photo_item_class %>"><%= image_tag(use.asset.url(:middle)) %> </div>
+                   <% photo_item_class = 'item' %>
+                <% end %>
+            </div>
+              <!-- Carousel nav -->
+              <a class="carousel-control left" href="#<%= offer.id %>Carousel" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#<%= offer.id %>Carousel" data-slide="next">&rsaquo;</a>
+         </div>
+     <% else %>
+       <center><%= image_tag('default_photo.jpg') %></center>      
+     <% end%>
+   <!-- Carousel end -->
 
-       <% end %>
+      <span class="label label-warning"><%= offer.price %> рублей.</span>
+        <p> 
+          <% if !offer.adword.nil? %>
+            <%= wrap(offer.adword).split('').join[0..50] %>...
+          <% else %>
+             Dolore sit corrupti error nemo nobis ut sit ipsa ut
+          <% end %>
+         <%= link_to offer.user.name, user_path(offer.user) %>
+        </p>
 
-       <center><span class="label label-warning"><%= offer.price %> рублей.</span></center>
-       <p><i> 
-        <% if !offer.adword.nil? %>
-         <%= wrap(offer.adword).split('').join[0..50] %>...</i>
-        <% else %>
-         Dolore sit corrupti error nemo nobis ut sit ipsa ut</i>
-        <% end %>
-         <%= link_to offer.user.name, user_path(offer.user) %></p>
-       <hr/>
-
-  <small>
-    <% if !current_user.nil? && current_user.admin? %>
-      <%= link_to '[delete]', offer, method: :delete, data: {confirm: "Delete offer?"} %>
-      <%= link_to '[полностью]',  offer_path(offer.id) %>
-    <% end %>
 
     <% if current_user.nil? && offer.contract.close_contract == false %>
-      <%= link_to 'все фотографии | принять заявку',  offer_path(offer.id) %> 
+      <%= link_to 'принять предложение',  offer_path(offer.id) %> 
       <% elsif current_user == offer.user && offer.contract.close_contract == false %>
       <%= link_to( '[отозвать предложение]', offer, method: :delete, data: { confirm: "You sure?" } ) %>     
     <% end %>
-
-  </small>
-
- </div>
+  </div>
 </li>
-
-
