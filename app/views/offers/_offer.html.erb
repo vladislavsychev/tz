@@ -18,7 +18,7 @@
               <a class="carousel-control right" href="#<%= offer.id %>Carousel" data-slide="next">&rsaquo;</a>
          </div>
      <% elsif size_collection == 1 %>
-       <%= image_tag(offer.user.attached_assets.asset.url(:middle)) %> 
+       <%= image_tag(offer.user.attached_assets.first.asset.url(:middle)) %> 
      <% else %>
        <%= image_tag('default_photo.jpg') %>      
      <% end%>
