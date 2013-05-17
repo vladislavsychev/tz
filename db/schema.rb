@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509070219) do
+ActiveRecord::Schema.define(:version => 20130517205118) do
 
   create_table "attached_assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20130509070219) do
     t.string   "time_rent",         :limit => 5
     t.integer  "lease_time",        :limit => 2
     t.text     "body_contract"
-    t.string   "contractor_mphone", :limit => 12
+    t.string   "contractor_mphone", :limit => 18
     t.string   "contractor_email",  :limit => 140
     t.string   "contractor_name",   :limit => 50
     t.boolean  "active",                           :default => false

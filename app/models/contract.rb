@@ -8,7 +8,7 @@
 #  time_rent         :string(5)
 #  lease_time        :integer
 #  body_contract     :text
-#  contractor_mphone :string(12)
+#  contractor_mphone :string(18)
 #  contractor_email  :string(140)
 #  contractor_name   :string(50)
 #  active            :boolean          default(FALSE)
@@ -26,14 +26,14 @@ class Contract < ActiveRecord::Base
 
   default_scope order: 'contracts.date_rent'
 
-  VALID_NAME_REGEX = /\A[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+\z/
+#  VALID_NAME_REGEX = /\A[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+[\.\_\ ]{0,2}[a-zA-Z0-9]+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_MPHONE_REGEX = /\A\d{6,11}\z/
+#  VALID_MPHONE_REGEX = /\A\d{6,11}\z/
   VALID_LEASE_TIME_REGEX = /\A\d{1,2}\z/
 
   validates :contractor_email, format: { with: VALID_EMAIL_REGEX }
   validates :contractor_name, presence: true
-  validates :contractor_mphone, format: { with: VALID_MPHONE_REGEX }
+  validates :contractor_mphone, presence: true, length: { maximum: 18}
   validates :t_car, presence: true
   validates :lease_time, format: { with: VALID_LEASE_TIME_REGEX }
   validates :body_contract, presence: true, length: { maximum: 2048 }
