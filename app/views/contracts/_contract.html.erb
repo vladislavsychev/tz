@@ -1,15 +1,12 @@
 <div style="margin-bottom: 30px"> 
-     <span style="color: #696"> 
-       <%= I18n.l contract.date_rent, format: :long %> 
-       <%= contract.time_rent %>
-     </span> 
-     <span style="color: #669">
+     <span style="color: #d96; font-size: 1.4em">
        <%= contract.t_car.upcase %>
-     </span> 
-     <span style="color: #d96">
       на <%= contract.lease_time %> часа/ов
      </span> 
-     <span>
+    <br>
+     <span style="color: #696; font-size: 1.2em"> 
+       <%= I18n.l contract.date_rent, format: :long %> 
+       <%= contract.time_rent %>
        для <%= contract.contractor_name %>
      </span> 
      <% if !current_user.nil? && current_user.admin? %>
