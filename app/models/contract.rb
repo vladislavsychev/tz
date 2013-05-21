@@ -32,13 +32,13 @@ class Contract < ActiveRecord::Base
   VALID_LEASE_TIME_REGEX = /\A\d{1,2}\z/
 
   validates :contractor_email, format: { with: VALID_EMAIL_REGEX }
-  validates :contractor_name, presence: true
-  validates :contractor_mphone, presence: true, length: { maximum: 18}
+  validates :contractor_name, length: {maximum: 50}
+  validates :contractor_mphone, length: { maximum: 18}
   validates :t_car, presence: true
   validates :lease_time, format: { with: VALID_LEASE_TIME_REGEX }
   validates :body_contract, presence: true, length: { maximum: 2048 }
   validates :date_rent, presence: true
-  validates :time_rent, presence: true, length: { maximum: 5}
+  validates :time_rent, length: { maximum: 5}
 
   before_save { |contract| contract.date_rent = date_rent.to_date }
   before_save { |contract| contract.contractor_email = contractor_email.downcase }

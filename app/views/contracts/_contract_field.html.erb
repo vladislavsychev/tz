@@ -30,7 +30,7 @@
     <td><h5>А на сколько часов арендуете:</h5> </td>
     <td>
        <div class="input-prepend">
-       <%= f.number_field :lease_time, value: '2', in: 2...24, class: 'input-small' %>
+       <%= f.number_field :lease_time, value: '', in: 2...24, class: 'input-small' %>
        <span class="add-on">часа/часов</span>
        </div>
      </td>
@@ -42,17 +42,17 @@
   </tr> 
   <tr><th colspan ="3" ><hr/></th></tr> 
   <tr>
-    <td><h5>Мобильный телефон и email заказчика:</h5> </td>
+    <td><h5>Email заказчика и телефон:</h5> </td>
     <td>
       <div class="input-prepend">
-       <span class="add-on">+7</span>
-        <%= f.phone_field :contractor_mphone, placeholder: '9161112233', class: "input-medium" %>
+       <span class="add-on">@</span>
+        <%= f.email_field :contractor_email, placeholder: 'email@mail.ru', class: "input-medium" %>
        </div>
     </td>
     <td>
       <div align="right"  class="input-prepend">
-       <span class="add-on">@</span>
-        <%= f.email_field :contractor_email, placeholder: 'email@mail.ru', class: "input-medium" %>
+       <span class="add-on">+7</span>
+        <%= f.phone_field :contractor_mphone, placeholder: '9161112233', class: "input-medium" %>
       </div>
     </td>
   </tr> 
