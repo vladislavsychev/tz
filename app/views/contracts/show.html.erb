@@ -8,7 +8,7 @@
         <center>
           <%= form_tag("/contracts/#{@contract.id}/valid") do %>
            <%= render 'shared/valid_field' %>
-            <%= submit_tag("Подтвердить заказ", class: "btn btn-success") %>
+            <%= submit_tag("Подтвердить заказ", class: "btn btn-success", onclick: "var _gaq = _gaq || []; _gaq.push(['_trackEvent',,,'NewOrder'])") %>
           <% end %>
         </center>
        <p align="justify">
