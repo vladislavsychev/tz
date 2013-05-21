@@ -25,7 +25,8 @@
          <%= link_to 'Помощь', help_path %> 
         </small>
        </p>
-     </div>   
+     </div>  
+     <%= render 'conversion_google' %>
     <% end %>
    
     <% if  @contract.active? && !@contract.close_contract? %>
