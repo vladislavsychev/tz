@@ -26,7 +26,8 @@
         </small>
        </p>
      </div>  
-     <%= render 'conversion_google' %>
+     <%= render 'shared/conversion_google' %>
+     <%= render 'shared/yandex_order' %>
     <% end %>
    
     <% if  @contract.active? && !@contract.close_contract? %>
@@ -36,10 +37,10 @@
         </section>
       <% else %>
        <div class="thumbnail blue-paper">
-        <b> Заказчик в любой момент может...</b><hr/>
+        Заказчик в любой момент может закрыть свой заказ. После закрытия заказа новые предложения не принимаются.<hr/>
           <%= form_tag("/contracts/#{@contract.id}/close", :method => "get") do %>
               <%= render 'shared/valid_field' %>
-              <%= submit_tag("Закрыть заявку", class: "btn btn-mini") %>
+              <%= submit_tag("Закрыть заказ", class: "btn btn-mini") %>
           <% end %>
         </div>
 

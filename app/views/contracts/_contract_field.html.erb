@@ -9,20 +9,19 @@
     <td><%= f.radio_button(:t_car, 'minivan') %></td>
     <td> минивен </td>
   </tr>
-
-  <tr><th colspan ="3"><hr/></th></tr>
+     <tr><th colspan="3"><hr/></th></tr>
   <tr>
     <td> <h5>Когда подать: </h5> </td>
     <td>
       <div class="input-prepend">
        <span class="add-on">дд.мм.гггг</span>
-<%= f.text_field :date_rent, placeholder: '08.03.2013', id: "datepicker", class: "datepicker input-small"  %>
+<%= f.text_field :date_rent, placeholder: '22.08.2013', id: "datepicker", class: "datepicker input-small"  %>
       </div>
     </td>
     <td>
        <div align="right" class="input-prepend">
        <span class="add-on">чч:мм</span>
-<%= f.text_field :time_rent, placeholder: '15:30', class: "input-small" %>
+          <%= f.text_field :time_rent, placeholder: '10:30', class: "input-small" %>
        </div>
     </td>
   </tr> 
@@ -38,9 +37,9 @@
   </tr>
   <tr>
     <td> <h5>Условия заказа и пожелания: </h5></td>
-    <th colspan="2"><%= f.text_area :body_contract, placeholder: "Подать Москва, ул.Смоленская д.10. Поедем в ЗАГС, на Красную площадь и в аэропорт Внуково. Там отпускаем машину. У невесты алергия на табачный дым. Нас 10 человек.", rows: 4 %></th>
+    <th colspan="2"><%= f.text_area :body_contract, placeholder: "Подать Москва, ул.Смоленская д.10. Катаемся по Москве. Потом едем в ресторане на Тверской, 10. Там отпускаем машину. Нас 10 человек.", rows: 4 %></th>
   </tr> 
-  <tr><th colspan ="3" ><hr/></th></tr> 
+  <tr><th colspan="3"><hr/></th></tr>
   <tr>
     <td><h5>Email заказчика и телефон:</h5> </td>
     <td>
