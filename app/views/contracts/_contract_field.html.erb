@@ -37,7 +37,7 @@
   </tr>
   <tr>
     <td> <h5>Условия заказа и пожелания: </h5></td>
-    <th colspan="2"><%= f.text_area :body_contract, placeholder: "Подать Москва, ул.Смоленская д.10. Катаемся по Москве. Потом едем в ресторане на Тверской, 10. Там отпускаем машину. Нас 10 человек.", rows: 4 %></th>
+    <th colspan="2"><%= f.text_area :body_contract, placeholder: "Подать Москва, ул.Смоленская д.10. Катаемся по Москве. Потом едем в ресторане на Тверской, 18. Там отпускаем машину. Нас 15 человек.", rows: 4 %></th>
   </tr> 
   <tr><th colspan="3"><hr/></th></tr>
   <tr>
@@ -70,7 +70,7 @@
    </td>
    <th colspan="2">
      <p align="left" class="muted">
-      <%= check_box_tag 'agree', true %><small>я принимаю <%= link_to "пользовательское соглашение", about_path %></small>
+      <%= check_box_tag 'agree', true %><small>я принимаю <a href="#agreement" data-toggle="modal">пользовательское соглашение</a></small>
       </p>
       <%= f.submit("Отправить заявку", class: "btn btn-large btn-success") %>
    </th>
